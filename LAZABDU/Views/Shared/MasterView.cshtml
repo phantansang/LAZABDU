@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    @RenderSection("OpenGraph", false)
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat%7CRoboto:100,300,400,500,700,900%7CRoboto+Condensed:100,300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Content/static/css/icon-font-linea.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/static/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/public/css/effect.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/public/css/home.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/static/css/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/public/css/responsive.css">
+    @RenderSection("Style", false)
+</head>
+<body>
+    @Html.Action("MobileMenu", "Home")
+    <!-- Header Box -->
+    <div class="wrappage">
+        <header class="relative full-width">
+            @Html.Action("MainMenu", "Home")
+        </header>
+        <!-- End Header Box -->
+        <!-- Content Box -->
+        @RenderBody()
+        <!-- End Content Box -->
+        <!-- Footer Box -->
+        <footer class="bg-gray full-width border no-border-r no-border-l footer-v3 no-border-b">
+            <div class="clearfix container-web relative">
+                <div class="container clear-padding">
+                    <div class="row">
+                        <!-- Support -->
+                        <div class="clearfix support-box support-box-v3 full-width">
+                            <div class="container-web clearfix">
+                                <div class="container ">
+                                    <div class="row">
+                                        <div class="support-box-info relative col-md-3 col-sm-3 col-xs-6">
+                                            <img src="~/Content/public/img/icon_free_ship.png" alt="Icon Free Ship" class="float-left" />
+                                            <p class="float-left">free shipping</p>
+                                            <p class="float-left">on order over $500</p>
+                                        </div>
+                                        <div class="support-box-info relative col-md-3 col-sm-3 col-xs-6">
+                                            <img src="~/Content/public/img/icon_support.png" alt="Icon Supports" class="float-left">
+                                            <p class="float-left">support</p>
+                                            <p class="float-left">life time support 24/7</p>
+                                        </div>
+                                        <div class="support-box-info relative col-md-3 col-sm-3 col-xs-6">
+                                            <img src="~/Content/public/img/icon_patner.png" alt="Icon partner" class="float-left">
+                                            <p class="float-left">help partner</p>
+                                            <p class="float-left">help all aspects</p>
+                                        </div>
+                                        <div class="support-box-info relative col-md-3 col-sm-3 col-xs-6">
+                                            <img src="~/Content/public/img/icon_phone_big.png" alt="Icon Phone Tablet" class="float-left">
+                                            <p class="float-left">contact with us</p>
+                                            <p class="float-left">+07 (0) 7782 9137</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Support Box -->
+                    </div>
+                    <div class="row">
+                        <div class="clearfix col-md-3 col-sm-6 col-xs-12 text-footer">
+                            <p>my account</p>
+                            <ul class="list-footer">
+                                <li><a href="#">Kênh người bán</a></li>
+                                <li><a href="#">Tài khoản</a></li>
+                                <li><a href="#">Giỏ hàng</a></li>
+                                <li><a href="#">Yêu thích</a></li>
+                                <li><a href="#">So sánh</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix col-md-3 col-sm-6 col-xs-12 text-footer">
+                            <p>information</p>
+                            <ul class="list-footer">
+                                <li><a href="#">Information</a></li>
+                                <li><a href="#">Orders History</a></li>
+                                <li><a href="#">My Wishlist</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Site Map</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix col-md-3 col-sm-6 col-xs-12 text-footer">
+                            <p>our services</p>
+                            <ul class="list-footer">
+                                <li><a href="#">Product Recall</a></li>
+                                <li><a href="#">Gift Vouchers</a></li>
+                                <li><a href="#">Returns And Exchanges</a></li>
+                                <li><a href="#">Shipping Options</a></li>
+                                <li><a href="#">Terms Of Use</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix col-md-3 col-sm-6 col-xs-12 text-footer">
+                            <p>contact us</p>
+                            <ul class="icon-footer">
+                                <li><i class="fa fa-home" aria-hidden="true"></i> 504 Đại lộ Bình Dương, Hiệp Thành, Thủ Dầu Một, Bình Dương</li>
+                                <li><i class="fa fa-envelope" aria-hidden="true"></i>  info@bdu.edu.vn</li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i> 0274 3 904 233</li>
+                                <li><i class="fa fa-fax" aria-hidden="true"></i> 0274 3 822 058</li>
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> 07:00 AM - 21:00 PM</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Box Social -->
+            <div class="top-footer full-width">
+                <div class="clearfix container-web relative">
+                    <div class="container">
+                        <div class="row">
+                            <div class="clearfix col-md-9 col-sm-12 clear-padding col-xs-12">
+                                <div class="clearfix text-subscribe">
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    <p>sign up for newsletter</p>
+                                    <p>Get updates on discount & counpons.</p>
+                                </div>
+                                <div class="clearfix form-subscribe">
+                                    <input type="text" name="email-subscribe" placeholder="Enter your email . . .">
+                                    <button class="animate-default button-hover-red">subscribe</button>
+                                </div>
+                            </div>
+                            <div class="clearfix col-md-3 col-sm-12 col-xs-12 clear-padding social-box text-right">
+                                <a href="#"><img src="~/Content/public/img/social_tw-min.png" alt="Icon Social Twiter"></a>
+                                <a href="#"><img src="~/Content/public/img/social_fa-min.png" alt="Icon Social Facebook"></a>
+                                <a href="#"><img src="~/Content/public/img/social_int-min.png" alt="Icon Social Instagram"></a>
+                                <a href="#"><img src="~/Content/public/img/social_yt-min.png" alt="Icon Social Youtube" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Box Social -->
+            <div class="bottom-footer full-width">
+                <div class="clearfix container-web">
+                    <div class="container">
+                        <div class="row">
+                            <div class="clearfix col-md-7 clear-padding copyright">
+                                <p>Copyright © 2018 by EngoCreative. All Rights Reserved.</p>
+                            </div>
+                            <div class="clearfix footer-icon-bottom col-md-5 float-right clear-padding">
+                                <div class="icon_logo_footer float-right">
+                                    <img src="~/Content/public/img/image_payment_footer-min.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- End Footer Box -->
+    <script src="~/Content/static/js/jquery-3.3.1.min.js" defer=""></script>
+    <script src="~/Content/static/js/bootstrap.min.js" defer=""></script>
+    <script src="~/Content/static/js/owl.carousel.min.js" defer=""></script>
+    <script src="~/Content/public/js/scripts.js" defer=""></script>
+    @RenderSection("Script", false)
+</body>
+</html>

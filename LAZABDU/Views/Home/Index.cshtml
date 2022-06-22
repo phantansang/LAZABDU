@@ -1,0 +1,519 @@
+﻿@{
+    Layout = "/Views/Shared/MasterView.cshtml";
+    var parentCategories = (List<LAZABDU.Models.ProductCategory>)ViewBag.prentCategories;
+    var childCategories = (List<LAZABDU.Models.ProductCategory>)ViewBag.childCategories;
+}
+@section OpenGraph{
+    <title>Mega Store | Siêu thị tiện lợi cho mọi nhà</title>
+}
+<div class="relative clearfix full-width">
+    <!-- Menu & Slide -->
+    <div class="clearfix container-web relative">
+        <div class="container relative">
+            <div class="row">
+                <div class="relative menu-slide col-lg-12 clear-padding bottom-margin-15-default">
+                    <!-- Menu -->
+                    <div class="menu-web relative menu-bg-white border no-border-t">
+                        <ul>
+                            <li><a href="#"><img src="~/Content/public/img/icon_hot_gray.png" alt="Icon Hot Deals" /> <p>Hot Deals</p></a></li>
+                            @foreach (var item in parentCategories)
+                            {
+                                <li><a href="#"><img src="@item.C_IconPath" alt="Icon @item.C_Title" /> <p>@item.C_Title</p></a></li>
+                            }
+                            <li><a href="#"><img src="~/Content/public/img/icon_voucher_gray.png" alt="Icon Phiếu giảm giá" /> <p>Phiếu giảm giá</p></a></li>
+                        </ul>
+                    </div>
+                    <!-- Slide -->
+                    <div class="clearfix slide-box-home slide-v3 relative top-margin-15-default left-margin-15-default">
+                        <div class="clearfix slide-home owl-carousel owl-theme">
+                            <div class="item"><a href="#"><img src="~/Content/public/img/slide_v3.png" alt="Banner Home V3"></a></div>
+                            <div class="item"><a href="#"><img src="~/Content/public/img/banner_v3_1-min.png" alt="Banner Home V3"></a></div>
+                        </div>
+                    </div>
+                    <div class="category-image top-margin-15-default left-margin-15-default float-left border">
+                        <div class="owl-carousel owl-theme">
+                            <div class="category-image-slide relative full-width">
+                                <div class="clearfix effect-hover-zoom overfollow-hidden img-categorys-slide center-vertical-image relative">
+                                    <img class="animate-default" src="~/Content/public/img/image_slide_top_1-min.png" alt="Image Shore" />
+                                    <a href="#"></a>
+                                </div>
+                                <a href="#">
+                                    <p class="uppercase bold">Mobile</p>
+                                </a>
+                            </div>
+                            <div class="category-image-slide relative full-width">
+                                <div class="clearfix effect-hover-zoom overfollow-hidden img-categorys-slide center-vertical-image relative">
+                                    <img class="animate-default" src="~/Content/public/img/image_slide_top_2-min.png" alt="Image Shore" />
+                                    <a href="#"></a>
+                                </div>
+                                <a href="#">
+                                    <p class="uppercase bold">Accessory</p>
+                                </a>
+                            </div>
+                            <div class="category-image-slide relative full-width">
+                                <div class="clearfix effect-hover-zoom overfollow-hidden img-categorys-slide center-vertical-image relative">
+                                    <img class="animate-default" src="~/Content/public/img/image_slide_top_3-min.png" alt="Image Shore" />
+                                    <a href="#"></a>
+                                </div>
+                                <a href="#">
+                                    <p class="uppercase bold">Camera</p>
+                                </a>
+                            </div>
+                            <div class="category-image-slide relative full-width">
+                                <div class="clearfix effect-hover-zoom overfollow-hidden img-categorys-slide center-vertical-image relative">
+                                    <img class="animate-default" src="~/Content/public/img/image_shore.png" alt="Image Shore" />
+                                    <a href="#"></a>
+                                </div>
+                                <a href="#">
+                                    <p class="uppercase bold">Shoes</p>
+                                </a>
+                            </div>
+                            <div class="category-image-slide relative full-width">
+                                <div class="clearfix effect-hover-zoom overfollow-hidden img-categorys-slide center-vertical-image relative">
+                                    <img class="animate-default" src="~/Content/public/img/image_slide_top_4-min.png" alt="Image Shore" />
+                                    <a href="#"></a>
+                                </div>
+                                <a href="#">
+                                    <p class="uppercase bold">Bags</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix box-banner-small-v3 top-margin-15-default left-margin-15-default box-banner-small">
+                        <div class="effect-layla banner-v3-home center-vertical-image zoom-image-hover relative bottom-margin-15-default">
+                            <img src="~/Content/public/img/banner_slide_v3.png" alt="">
+                            <a href="#"></a>
+                        </div>
+                        <div class="effect-layla banner-v3-home center-vertical-image zoom-image-hover relative">
+                            <img src="~/Content/public/img/banner_slide_v3_1-min.png" alt="">
+                            <a href="#"></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Menu & Slide -->
+            </div>
+        </div>
+    </div>
+    <!-- Box Banner Percent 3 -->
+    <div class="banner-percent-3 container-web">
+        <div class="container">
+            <div class="row">
+                <div class="banner-pecent-3-top bottom-margin-15-default display-table">
+                    <div class="effect-bubba zoom-image-hover overfollow-hidden float-left relative right-margin-15-default ">
+                        <img src="~/Content/public/img/banner_percent_3.png" class="" alt="Banner Percent" />
+                        <a href="#"></a>
+                    </div>
+                    <div class="effect-bubba zoom-image-hover overfollow-hidden float-left relative">
+                        <img src="~/Content/public/img/banner_pecent_3_1-min.png" class="" alt="Banner Percent" />
+                        <a href="#"></a>
+                    </div>
+                    <div class="effect-bubba zoom-image-hover overfollow-hidden float-left relative left-margin-15-default">
+                        <img src="~/Content/public/img/banner_pecent_3_2-min.png" class="" alt="Banner Percent" />
+                        <a href="#"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner Percent 3 -->
+    <!-- List Logo Top -->
+    <div class="container-web">
+        <div class="container">
+            <div class="row list-logo-top-v3">
+                <ul class="clear-margin border-collapsed-box">
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_3.png" alt="Logo"></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_7.png" alt="Logo"></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_4.png" alt="Logo"></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_8.png" alt="Logo"></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_5.png" alt="Logo"></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_9.png" alt="Logo"></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_6.png" alt="Logo" /></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_10.png" alt="Logo" /></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_1.png" alt="Logo" /></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_11.png" alt="Logo" /></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_2.png" alt="Logo" /></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_12.png" alt="Logo" /></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_13-min.png" alt="Logo"></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_14-min.png" alt="Logo"></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_4.png" alt="Logo"></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_15-min.png" alt="Logo"></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_16-min.png" alt="Logo"></a></li>
+                    <li class="border-collapsed-element"><a href="#"><img src="~/Content/public/img/logo_17-min.png" alt="Logo"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End List Logo Top -->
+    <!--First Product Box -->
+    @{
+        var _firstCategory = parentCategories.First();
+        var _firstCategoryFirst = childCategories.Where(R => R.C_IDParent == _firstCategory.C_ID).First();
+        <div class="top-margin-default container-web">
+            <div class="container">
+                <div class="row">
+                    <div class="clearfix title-box title-box-v3 full-width">
+                        <div class="clearfix name-title-box title-category title-green-bd relative">
+                            <img src="@_firstCategory.C_IconPath.Replace("gray", "color")" alt="Icon @Html.Raw(_firstCategory.C_Title)" class="absolute">
+                            <p class="text-default-color">@Html.Raw(_firstCategory.C_Title)</p>
+                        </div>
+                        <div class="clearfix menu-title-box capitalize">
+                            <ul>
+                                @foreach (var item in childCategories.Where(R => R.C_IDParent == _firstCategory.C_ID))
+                                {
+                                    <li><a href="javascript:;" onclick="showBoxCateHomeByID('#@item.C_ID','.box-@_firstCategory.C_ID-content')">@Html.Raw(item.C_Title)</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bottom-margin-default full-width">
+                        <!-- Banner Home V3 -->
+                        <div class="effect-bubba zoom-image-hover overfollow-hidden banner-category banner-category-v3 float-left relative border no-border-t no-border-l no-border-r">
+                            <img src="~/Content/public/img/banner_home_v3-min.png" alt="Banner Home V3">
+                            <a href="#"></a>
+                        </div>
+                        <!-- List Product V3 -->
+                        <div class="clearfix box-content-product-home-v3 float-left relative">
+                            <div class="box-@_firstCategory.C_ID-content relative animate-default active-box-category hidden-content-box border-collapsed-box" id="@Html.Raw(_firstCategoryFirst.C_ID)">
+                                @foreach (var _product in _firstCategoryFirst.Products)
+                                {
+                                    <div class="clearfix border-collapsed-element relative product-no-ranking percent-content-3">
+                                        <div class="effect-hover-zoom center-vertical-image">
+                                            <img src="~/Content/public/img/product_home_9-min.png" alt="@Html.Raw(_product.C_Title)">
+                                            <a href="#"></a>
+                                        </div>
+                                        <div class="clearfix absolute name-product-no-ranking">
+                                            <p class="title-product clearfix full-width"><a href="#">@_product.C_Title</a></p>
+                                            <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @foreach (var _category in childCategories.Where(R => R.C_IDParent == _firstCategory.C_ID && R.C_ID != _firstCategoryFirst.C_ID))
+                            {
+                                <div class="box-@_firstCategory.C_ID-content relative animate-default hidden-content-box border-collapsed-box" id="@_category.C_ID">
+                                    @foreach (var _product in _category.Products.Take(6))
+                                    {
+                                        <div class="clearfix border-collapsed-element relative product-no-ranking percent-content-3">
+                                            <div class="effect-hover-zoom center-vertical-image">
+                                                <img src="~/Content/public/img/product_home_9-min.png" alt="Product Image . . .">
+                                                <a href="#"></a>
+                                            </div>
+                                            <div class="clearfix absolute name-product-no-ranking">
+                                                <p class="title-product clearfix full-width"><a href="#">@Html.Raw(_product.C_Title)</a></p>
+                                                <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <!-- List Logo V3 -->
+                        <div class="clear-padding list-logo-category-v2 list-logo-category full-width border no-border-t">
+                            <ul>
+                                <li><a href="#"><img src="~/Content/public/img/logo_3.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_4.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_5.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_6.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_1.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_2.png" alt="Logo"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!-- End Product Box -->
+    <!-- Banner Full With -->
+    <div class="clearfix relative full-width bottom-margin-default">
+        <div class="clearfix container-web">
+            <div class="container banner_full_width">
+                <div class="row overfollow-hidden banners-effect5 relative">
+                    <img src="~/Content/public/img/banner_full_w.png" alt="Banner Full Width . . .">
+                    <a href="#"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner Full With -->
+    <!--Second Product Box -->
+    @{
+        var _secondCategory = parentCategories[1];
+        var _secondCategoryFirst = childCategories.Where(R => R.C_IDParent == _secondCategory.C_ID).First();
+        <div class="container-web">
+            <div class="container">
+                <div class="row">
+                    <div class="clearfix title-box title-box-v3 full-width">
+                        <div class="clearfix name-title-box title-category title-jungle-green-bd relative">
+                            <img src="@_secondCategory.C_IconPath.Replace("gray", "color")" alt="Icon @Html.Raw(_secondCategory.C_Title)" class="absolute">
+                            <p class="text-default-color">@Html.Raw(_secondCategory.C_Title)</p>
+                        </div>
+                        <div class="clearfix menu-title-box capitalize">
+                            <ul>
+                                @foreach (var item in childCategories.Where(R => R.C_IDParent == _secondCategory.C_ID))
+                                {
+                                    <li><a onclick="showBoxCateHomeByID('#@item.C_ID','.box-@_secondCategory.C_ID-content')" href="javascript:;">@Html.Raw(item.C_Title)</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bottom-margin-default full-width">
+                        <!-- Banner Home V3 -->
+                        <div class="effect-bubba zoom-image-hover overfollow-hidden banner-category banner-category-v3 float-left relative border no-border-t no-border-l no-border-r">
+                            <img src="~/Content/public/img/banner_home_v3_1-min.png" alt="Banner Home V3">
+                            <a href="#"></a>
+                        </div>
+                        <!-- List Product V3 -->
+                        <div class="clearfix box-content-product-home-v3 float-left relative">
+                            <div class="box-@_secondCategory.C_ID-content relative animate-default active-box-category hidden-content-box border-collapsed-box" id="@Html.Raw(_secondCategoryFirst.C_ID)">
+                                @foreach (var _product in _secondCategoryFirst.Products)
+                                {
+                                    <div class="clearfix border-collapsed-element relative product-no-ranking percent-content-3">
+                                        <div class="effect-hover-zoom center-vertical-image">
+                                            <img src="~/Content/public/img/product_home_9-min.png" alt="@Html.Raw(_product.C_Title)">
+                                            <a href="#"></a>
+                                        </div>
+                                        <div class="clearfix absolute name-product-no-ranking">
+                                            <p class="title-product clearfix full-width"><a href="#">@Html.Raw(_product.C_Title)</a></p>
+                                            <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @foreach (var _category in childCategories.Where(R => R.C_IDParent == _secondCategory.C_ID && R.C_ID != _secondCategoryFirst.C_ID))
+                            {
+                                <div class="box-@_secondCategory.C_ID-content relative animate-default hidden-content-box border-collapsed-box" id="@_category.C_ID">
+                                    @foreach (var _product in _category.Products.Take(6))
+                                    {
+                                        <div class="clearfix border-collapsed-element relative product-no-ranking percent-content-3">
+                                            <div class="effect-hover-zoom center-vertical-image">
+                                                <img src="~/Content/public/img/product_home_4-min.png" alt="Product Image . . .">
+                                                <a href="#"></a>
+                                            </div>
+                                            <div class="clearfix absolute name-product-no-ranking">
+                                                <p class="title-product clearfix full-width"><a href="#">@_product.C_Title</a></p>
+                                                <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <!-- List Logo V3 -->
+                        <div class="clear-padding list-logo-category-v2 list-logo-category full-width border no-border-t">
+                            <ul>
+                                <li><a href="#"><img src="~/Content/public/img/logo_3.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_4.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_5.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_6.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_1.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_2.png" alt="Logo"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!-- End Product Box -->
+    <!-- Banner Full With -->
+    <div class="clearfix relative full-width bottom-margin-default">
+        <div class="clearfix container-web">
+            <div class="container banner_full_width">
+                <div class="row relative banners-effect5 overfollow-hidden">
+                    <img src="~/Content/public/img/banner_full_w_1.png" alt="Banner Full Width . . .">
+                    <a href="#"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner Full With -->
+    <!-- Third Product Box -->
+    @{
+        var _thirdCategory = parentCategories[2];
+        var _thirdCategoryFirst = childCategories.Where(R => R.C_IDParent == _thirdCategory.C_ID).First();
+        <div class="container-web">
+            <div class="container">
+                <div class="row">
+                    <div class="clearfix title-box title-box-v3 full-width">
+                        <div class="clearfix name-title-box title-category title-turquoise-bd relative">
+                            <img src="@_thirdCategory.C_IconPath.Replace("gray", "color")" alt="Icon @Html.Raw(_thirdCategory.C_Title)" class="absolute">
+                            <p class="text-default-color">@Html.Raw(_thirdCategory.C_Title)</p>
+                        </div>
+                        <div class="clearfix menu-title-box capitalize">
+                            <ul>
+                                @foreach (var item in childCategories.Where(R => R.C_IDParent == _thirdCategory.C_ID))
+                                {
+                                    <li><a onclick="showBoxCateHomeByID('#@item.C_ID','.box-@_thirdCategory.C_ID-content')" href="javascript:;">@Html.Raw(item.C_Title)</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bottom-margin-default full-width">
+                        <!-- Banner Home V3 -->
+                        <div class="effect-bubba zoom-image-hover overfollow-hidden banner-category banner-category-v3 float-left relative border no-border-t no-border-l no-border-r">
+                            <img src="~/Content/public/img/banner_home_v3_2-min.png" alt="Banner Home V3">
+                            <a href="#"></a>
+                        </div>
+                        <!-- List Product V3 -->
+                        <div class="clearfix box-content-product-home-v3 float-left relative">
+                            <div class="box-@_thirdCategory.C_ID-content relative animate-default active-box-category hidden-content-box border-collapsed-box" id="@_thirdCategoryFirst.C_ID">
+                                @foreach (var _product in _thirdCategoryFirst.Products)
+                                {
+                                    <div class="clearfix border-collapsed-element relative product-no-ranking percent-content-3">
+                                        <div class="effect-hover-zoom center-vertical-image">
+                                            <img src="~/Content/public/img/product_home_9-min.png" alt="@Html.Raw(_product.C_Title)">
+                                            <a href="#"></a>
+                                        </div>
+                                        <div class="clearfix absolute name-product-no-ranking">
+                                            <p class="title-product clearfix full-width"><a href="#">@Html.Raw(_product.C_Title)</a></p>
+                                            <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @foreach (var _category in childCategories.Where(R => R.C_IDParent == _thirdCategory.C_ID && R.C_ID != _thirdCategoryFirst.C_ID))
+                            {
+                                <div class="box-@_thirdCategory.C_ID-content relative animate-default hidden-content-box border-collapsed-box" id="@_category.C_ID">
+                                    @foreach (var _product in _category.Products.Take(6))
+                                    {
+                                        <div class="clearfix border-collapsed-element relative product-no-ranking percent-content-3">
+                                            <div class="effect-hover-zoom center-vertical-image">
+                                                <img src="~/Content/public/img/product_home_4-min.png" alt="@Html.Raw(_product.C_Title)">
+                                                <a href="#"></a>
+                                            </div>
+                                            <div class="clearfix absolute name-product-no-ranking">
+                                                <p class="title-product clearfix full-width"><a href="#">@Html.Raw(_product.C_Title)</a></p>
+                                                <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <!-- List Logo V3 -->
+                        <div class="clear-padding list-logo-category-v2 list-logo-category full-width border no-border-t">
+                            <ul>
+                                <li><a href="#"><img src="~/Content/public/img/logo_3.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_4.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_5.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_6.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_1.png" alt="Logo"></a></li>
+                                <li><a href="#"><img src="~/Content/public/img/logo_2.png" alt="Logo"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!-- End Product Box -->
+    <!-- Banner Half Website -->
+    <div class="relative banner-half-web full-width bottom-margin-default">
+        <div class="clearfix container-web">
+            <div class="container">
+                <div class="row">
+                    <div class="clearfix content-left col-md-6 col-sm-6 col-xs-12 zoom-image-hover overfollow-hidden">
+                        <div class="overfollow-hidden effect-oscar relative">
+                            <img class="max-width" src="~/Content/public/img/banner_halt.png" alt="Banner . . ." />
+                            <a href="#"></a>
+                        </div>
+                    </div>
+                    <div class="clearfix content-right col-md-6 col-sm-6 col-xs-12 zoom-image-hover overfollow-hidden">
+                        <div class="overfollow-hidden effect-oscar relative">
+                            <img class="max-width" src="~/Content/public/img/banner_percent_2.png" alt="Banner . . ." />
+                            <a href="#"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Product Category Percent 2 -->
+    <div class="full-width category-percent-two bottom-margin-default">
+        <div class="clearfix container-web">
+            <div class="container">
+                <div class="row">
+                    @{
+                        parentCategories.RemoveRange(0, 3);
+                        foreach (var _category in parentCategories)
+                        {
+                            <div class="clearfix col-md-6 col-sm-6" style="padding-top: 30px">
+                                <!-- Title Product -->
+                                <div class="clearfix title-box full-width border">
+                                    <div class="clearfix name-title-box title-category title-gold-bg relative">
+                                        <img src="@_category.C_IconPath.Replace("_gray","")" alt="Icon @Html.Raw(_category.C_Title)" class="absolute" />
+                                        <p>@Html.Raw(_category.C_Title)</p>
+                                    </div>
+                                    <div class="clearfix menu-title-box">
+                                        <p class="view-all-product-category title-hover-red"><a href="#" class="animate-default">Xem thêm</a></p>
+                                    </div>
+                                </div>
+                                <div class="banner-percent-product zoom-image-hover overfollow-hidden effect-oscar relative">
+                                    @if (_category.C_Banner != null && _category.C_Banner != "")
+                                    {
+                                        <img src="@_category.C_Banner" class="max-width" alt="Image @Html.Raw(_category.C_Title)" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Content/public/img/banner_p_2_2-none.png" class="max-width" alt="Image @Html.Raw(_category.C_Title)" />
+                                    }
+                                    <a href="#"></a>
+                                </div>
+                                <!-- Content Product Box -->
+                                <div class="clearfix product-percent-content border-collapsed-box full-width">
+                                    @if (_category.Products.Count > 0)
+                                    {
+                                        foreach (var _product in _category.Products.Take(6))
+                                        {
+                                            <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-3">
+                                                <div class="effect-hover-zoom center-vertical-image">
+                                                    <img src="~/Content/public/img/img_product_small_1-min.png" alt="@Html.Raw(_product.C_Title)">
+                                                    <a href="#"></a>
+                                                </div>
+                                                <div class="clearfix absolute name-product-no-ranking">
+                                                    <p class="title-product clearfix full-width title-hover-black"><a href="#">@Html.Raw(_product.C_Title)</a></p>
+                                                    <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (int i = 1; i <= 6; i++)
+                                        {
+                                            <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-3">
+                                                <div class="effect-hover-zoom center-vertical-image">
+                                                    <img src="~/Content/public/img/img_product_small_1-min.png" alt="@Html.Raw("[Demo] " + "sản phẩm " + _category.C_Title)">
+                                                    <a href="#"></a>
+                                                </div>
+                                                <div class="clearfix absolute name-product-no-ranking">
+                                                    <p class="title-product clearfix full-width title-hover-black"><a href="#">@Html.Raw("[Demo] " + "sản phẩm " + _category.C_Title)</a></p>
+                                                    <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", 100000 + 1000000 * 10 / 100)</span> @String.Format("{0:0,0 ₫}", 800000)</p>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Product Category Percent 2 -->
+    <!-- Banner Full With -->
+    <div class="relative full-width bottom-margin-default">
+        <div class="clearfix container-web">
+            <div class="container banner_full_width">
+                <div class="row overfollow-hidden banners-effect5 relative">
+                    <img src="~/Content/public/img/banner_full_width_v3-min.png" alt="Banner Full Width . . .">
+                    <a href="#"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner Full With -->
+</div>

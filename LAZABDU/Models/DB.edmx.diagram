@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="763c4132925745daa76ed963e65090cb" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.AdminAccount" Width="1.5" PointX="12" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.AdminLog" Width="1.5" PointX="14.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Booking" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.BookingDetail" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Delivery" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.EmailMarketing" Width="1.5" PointX="2.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Interface" Width="1.5" PointX="14.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.News" Width="1.5" PointX="17.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.NewsCategory" Width="1.5" PointX="15" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Product" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.ProductCategory" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Promotion" Width="1.5" PointX="7.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Role" Width="1.5" PointX="9.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Shop" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.UserAccount" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__AdminAcco___Role__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__AdminLog___By__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__Interface___Upda__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK_POSTEDBY" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__Booking___Custom__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__Booking___Delive__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__Booking___Paymen__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__BookingDe___Book__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__BookingDe___Prod__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__News___Category__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK_PARENT_NEWS_CATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__Product___Cate__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__Product___Create__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__Promotion___Prod__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK_ParentCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="LAZABDU_VN_DBModel.FK__Shop___Owner__38996AB5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,1379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LAZABDU_VN_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminAccount">
+          <Key>
+            <PropertyRef Name="_Username" />
+          </Key>
+          <Property Name="_Username" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="_Password" Type="varchar" MaxLength="20" />
+          <Property Name="_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="_Sex" Type="nvarchar" MaxLength="10" />
+          <Property Name="_Avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Phone" Type="varchar" MaxLength="20" />
+          <Property Name="_Email" Type="varchar" MaxLength="50" />
+          <Property Name="_Role" Type="varchar" MaxLength="20" />
+          <Property Name="_Lastlogin" Type="datetime" />
+          <Property Name="_LastChangePassword" Type="datetime" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AdminLog">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="_By" Type="varchar" MaxLength="20" />
+          <Property Name="_Time" Type="datetime" />
+          <Property Name="_Message" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Stauts" Type="int" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="_Customer" Type="varchar" MaxLength="20" />
+          <Property Name="_ProdCount" Type="int" />
+          <Property Name="_OrderValue" Type="int" />
+          <Property Name="_ReceiverName" Type="nvarchar" MaxLength="50" />
+          <Property Name="_ReceiverSex" Type="nvarchar" MaxLength="10" />
+          <Property Name="_ReceiverAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="_ReceiverPhone" Type="varchar" MaxLength="20" />
+          <Property Name="_ReceiverEmail" Type="varchar" MaxLength="50" />
+          <Property Name="_DeliveryBy" Type="varchar" MaxLength="20" />
+          <Property Name="_PaymentMethod" Type="varchar" MaxLength="20" />
+          <Property Name="_Status" Type="int" />
+          <Property Name="_Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="BookingDetail">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="_Booking" Type="varchar" MaxLength="20" />
+          <Property Name="_Product" Type="varchar" MaxLength="20" />
+          <Property Name="_Quantity" Type="int" />
+          <Property Name="_Price" Type="int" />
+          <Property Name="_PromotionPrice" Type="int" />
+          <Property Name="_Total" Type="int" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="_Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Logo" Type="int" />
+          <Property Name="_Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Phone" Type="varchar" MaxLength="20" />
+          <Property Name="_Email" Type="varchar" MaxLength="50" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EmailMarketing">
+          <Key>
+            <PropertyRef Name="_Email" />
+          </Key>
+          <Property Name="_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="_Sex" Type="nvarchar" MaxLength="20" />
+          <Property Name="_Phone" Type="varchar" MaxLength="20" />
+          <Property Name="_Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="_IPClient" Type="nvarchar" MaxLength="50" />
+          <Property Name="_Status" Type="int" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Interface">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="_Location" Type="nvarchar" MaxLength="100" />
+          <Property Name="_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="_Src" Type="nvarchar" MaxLength="200" />
+          <Property Name="_UpdateBy" Type="varchar" MaxLength="20" />
+          <Property Name="_CreateAt" Type="datetime" />
+          <Property Name="_ModifyAt" Type="datetime" />
+          <Property Name="_Status" Type="int" />
+          <Property Name="_Notes" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="_Category" Type="varchar" MaxLength="20" />
+          <Property Name="_Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Slugtitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="_ImagePath" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="_Content" Type="nvarchar(max)" />
+          <Property Name="_Hashtag" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Views" Type="int" />
+          <Property Name="_Status" Type="int" />
+          <Property Name="_CreateAt" Type="datetime" />
+          <Property Name="_ModifyAt" Type="datetime" />
+          <Property Name="_PostedBy" Type="varchar" MaxLength="20" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="NewsCategory">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="_IDParent" Type="varchar" MaxLength="20" />
+          <Property Name="_Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="_SlugTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="_ImagePath" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Priority" Type="int" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="_Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="_Decription" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Status" Type="int" />
+          <Property Name="_Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="_Cate" Type="varchar" MaxLength="20" />
+          <Property Name="_Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="_SlugTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="_ImagePath" Type="nvarchar" MaxLength="200" />
+          <Property Name="_ImagePath_2" Type="nvarchar" MaxLength="200" />
+          <Property Name="_ImagePath_3" Type="nvarchar" MaxLength="200" />
+          <Property Name="_ImagePath_4" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Decription" Type="nvarchar" MaxLength="500" />
+          <Property Name="_Content" Type="nvarchar(max)" />
+          <Property Name="_Price" Type="int" />
+          <Property Name="_Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="_CreateBy" Type="varchar" MaxLength="20" />
+          <Property Name="_Total" Type="int" />
+          <Property Name="_Inventory" Type="int" />
+          <Property Name="_CreateAt" Type="datetime" />
+          <Property Name="_ModifyAt" Type="datetime" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="_IDParent" Type="varchar" MaxLength="20" />
+          <Property Name="_Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="_SlugTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="_ImagePath" Type="nvarchar" MaxLength="200" />
+          <Property Name="_IconPath" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Banner" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Decription" Type="nvarchar" MaxLength="500" />
+          <Property Name="_Priority" Type="int" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="_Product" Type="varchar" MaxLength="20" />
+          <Property Name="_Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Discount" Type="int" />
+          <Property Name="_From" Type="datetime" />
+          <Property Name="_To" Type="datetime" />
+          <Property Name="_Status" Type="int" />
+          <Property Name="_CreateAt" Type="datetime" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="_Add_Category" Type="int" />
+          <Property Name="_Update_Category" Type="int" />
+          <Property Name="_Delete_Category" Type="int" />
+          <Property Name="_Approve_Product" Type="int" />
+          <Property Name="_Update_Product" Type="int" />
+          <Property Name="_Delete_Product" Type="int" />
+          <Property Name="_Add_News" Type="int" />
+          <Property Name="_Update_News" Type="int" />
+          <Property Name="_Delete_News" Type="int" />
+          <Property Name="_Add_Role" Type="int" />
+          <Property Name="_Update_Role" Type="int" />
+          <Property Name="_Delete_Role" Type="int" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="_Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="_SlugTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Decription" Type="nvarchar" MaxLength="500" />
+          <Property Name="_Avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Phone" Type="varchar" MaxLength="20" />
+          <Property Name="_Email" Type="varchar" MaxLength="50" />
+          <Property Name="_CreateAt" Type="datetime" />
+          <Property Name="_Owner" Type="varchar" MaxLength="20" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="_Username" />
+          </Key>
+          <Property Name="_Username" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="_Password" Type="varchar" MaxLength="20" />
+          <Property Name="_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="_Sex" Type="nvarchar" MaxLength="10" />
+          <Property Name="_Avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Phone" Type="varchar" MaxLength="20" />
+          <Property Name="_Email" Type="varchar" MaxLength="50" />
+          <Property Name="_Lastlogin" Type="datetime" />
+          <Property Name="_LastChangePassword" Type="datetime" />
+          <Property Name="_IsKYC" Type="int" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK__AdminAcco___Role__52593CB8">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="AdminAccount" Type="Self.AdminAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="AdminAccount">
+              <PropertyRef Name="_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AdminLog___By__5EBF139D">
+          <End Role="AdminAccount" Type="Self.AdminAccount" Multiplicity="0..1" />
+          <End Role="AdminLog" Type="Self.AdminLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminAccount">
+              <PropertyRef Name="_Username" />
+            </Principal>
+            <Dependent Role="AdminLog">
+              <PropertyRef Name="_By" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking___Custom__47DBAE45">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="_Username" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="_Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking___Delive__48CFD27E">
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="_DeliveryBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking___Paymen__49C3F6B7">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="_PaymentMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BookingDe___Book__4CA06362">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+          <End Role="BookingDetail" Type="Self.BookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="BookingDetail">
+              <PropertyRef Name="_Booking" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BookingDe___Prod__4D94879B">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="BookingDetail" Type="Self.BookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="BookingDetail">
+              <PropertyRef Name="_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Interface___Upda__5BE2A6F2">
+          <End Role="AdminAccount" Type="Self.AdminAccount" Multiplicity="0..1" />
+          <End Role="Interface" Type="Self.Interface" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminAccount">
+              <PropertyRef Name="_Username" />
+            </Principal>
+            <Dependent Role="Interface">
+              <PropertyRef Name="_UpdateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__News___Category__5812160E">
+          <End Role="NewsCategory" Type="Self.NewsCategory" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsCategory">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product___Cate__3D5E1FD2">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="_Cate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product___Create__3E52440B">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="_CreateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Promotion___Prod__412EB0B6">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="Promotion">
+              <PropertyRef Name="_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shop___Owner__38996AB5">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="_Username" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PARENT_NEWS_CATEGORY">
+          <End Role="NewsCategory" Type="Self.NewsCategory" Multiplicity="0..1" />
+          <End Role="NewsCategory1" Type="Self.NewsCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsCategory">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="NewsCategory1">
+              <PropertyRef Name="_IDParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParentCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+          <End Role="ProductCategory1" Type="Self.ProductCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="ProductCategory1">
+              <PropertyRef Name="_IDParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSTEDBY">
+          <End Role="AdminAccount" Type="Self.AdminAccount" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminAccount">
+              <PropertyRef Name="_Username" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="_PostedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LAZABDU_VN_DBModelStoreContainer">
+          <EntitySet Name="AdminAccount" EntityType="Self.AdminAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminLog" EntityType="Self.AdminLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookingDetail" EntityType="Self.BookingDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailMarketing" EntityType="Self.EmailMarketing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Interface" EntityType="Self.Interface" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsCategory" EntityType="Self.NewsCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AdminAcco___Role__52593CB8" Association="Self.FK__AdminAcco___Role__52593CB8">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="AdminAccount" EntitySet="AdminAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AdminLog___By__5EBF139D" Association="Self.FK__AdminLog___By__5EBF139D">
+            <End Role="AdminAccount" EntitySet="AdminAccount" />
+            <End Role="AdminLog" EntitySet="AdminLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking___Custom__47DBAE45" Association="Self.FK__Booking___Custom__47DBAE45">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking___Delive__48CFD27E" Association="Self.FK__Booking___Delive__48CFD27E">
+            <End Role="Delivery" EntitySet="Delivery" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking___Paymen__49C3F6B7" Association="Self.FK__Booking___Paymen__49C3F6B7">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BookingDe___Book__4CA06362" Association="Self.FK__BookingDe___Book__4CA06362">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="BookingDetail" EntitySet="BookingDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BookingDe___Prod__4D94879B" Association="Self.FK__BookingDe___Prod__4D94879B">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="BookingDetail" EntitySet="BookingDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Interface___Upda__5BE2A6F2" Association="Self.FK__Interface___Upda__5BE2A6F2">
+            <End Role="AdminAccount" EntitySet="AdminAccount" />
+            <End Role="Interface" EntitySet="Interface" />
+          </AssociationSet>
+          <AssociationSet Name="FK__News___Category__5812160E" Association="Self.FK__News___Category__5812160E">
+            <End Role="NewsCategory" EntitySet="NewsCategory" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product___Cate__3D5E1FD2" Association="Self.FK__Product___Cate__3D5E1FD2">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product___Create__3E52440B" Association="Self.FK__Product___Create__3E52440B">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Promotion___Prod__412EB0B6" Association="Self.FK__Promotion___Prod__412EB0B6">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Promotion" EntitySet="Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shop___Owner__38996AB5" Association="Self.FK__Shop___Owner__38996AB5">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Shop" EntitySet="Shop" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PARENT_NEWS_CATEGORY" Association="Self.FK_PARENT_NEWS_CATEGORY">
+            <End Role="NewsCategory" EntitySet="NewsCategory" />
+            <End Role="NewsCategory1" EntitySet="NewsCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParentCategory" Association="Self.FK_ParentCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="ProductCategory1" EntitySet="ProductCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSTEDBY" Association="Self.FK_POSTEDBY">
+            <End Role="AdminAccount" EntitySet="AdminAccount" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LAZABDU_VN_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminAccount">
+          <Key>
+            <PropertyRef Name="C_Username" />
+          </Key>
+          <Property Name="C_Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="C_Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="C_Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_Role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Lastlogin" Type="DateTime" Precision="3" />
+          <Property Name="C_LastChangePassword" Type="DateTime" Precision="3" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__AdminAcco___Role__52593CB8" FromRole="AdminAccount" ToRole="Role" />
+          <NavigationProperty Name="AdminLogs" Relationship="Self.FK__AdminLog___By__5EBF139D" FromRole="AdminAccount" ToRole="AdminLog" />
+          <NavigationProperty Name="Interfaces" Relationship="Self.FK__Interface___Upda__5BE2A6F2" FromRole="AdminAccount" ToRole="Interface" />
+          <NavigationProperty Name="News" Relationship="Self.FK_POSTEDBY" FromRole="AdminAccount" ToRole="News" />
+        </EntityType>
+        <EntityType Name="AdminLog">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_By" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Time" Type="DateTime" Precision="3" />
+          <Property Name="C_Message" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Stauts" Type="Int32" />
+          <NavigationProperty Name="AdminAccount" Relationship="Self.FK__AdminLog___By__5EBF139D" FromRole="AdminLog" ToRole="AdminAccount" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Customer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_ProdCount" Type="Int32" />
+          <Property Name="C_OrderValue" Type="Int32" />
+          <Property Name="C_ReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="C_ReceiverSex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="C_ReceiverAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_ReceiverPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_ReceiverEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_DeliveryBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_PaymentMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Status" Type="Int32" />
+          <Property Name="C_Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK__Booking___Custom__47DBAE45" FromRole="Booking" ToRole="UserAccount" />
+          <NavigationProperty Name="Delivery" Relationship="Self.FK__Booking___Delive__48CFD27E" FromRole="Booking" ToRole="Delivery" />
+          <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Booking___Paymen__49C3F6B7" FromRole="Booking" ToRole="PaymentMethod" />
+          <NavigationProperty Name="BookingDetails" Relationship="Self.FK__BookingDe___Book__4CA06362" FromRole="Booking" ToRole="BookingDetail" />
+        </EntityType>
+        <EntityType Name="BookingDetail">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_Booking" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Product" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Quantity" Type="Int32" />
+          <Property Name="C_Price" Type="Int32" />
+          <Property Name="C_PromotionPrice" Type="Int32" />
+          <Property Name="C_Total" Type="Int32" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK__BookingDe___Book__4CA06362" FromRole="BookingDetail" ToRole="Booking" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__BookingDe___Prod__4D94879B" FromRole="BookingDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Logo" Type="Int32" />
+          <Property Name="C_Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking___Delive__48CFD27E" FromRole="Delivery" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="EmailMarketing">
+          <Key>
+            <PropertyRef Name="C_Email" />
+          </Key>
+          <Property Name="C_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_Sex" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="C_Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_IPClient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="C_Status" Type="Int32" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Interface">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_Src" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_UpdateBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="C_ModifyAt" Type="DateTime" Precision="3" />
+          <Property Name="C_Status" Type="Int32" />
+          <Property Name="C_Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminAccount" Relationship="Self.FK__Interface___Upda__5BE2A6F2" FromRole="Interface" ToRole="AdminAccount" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Slugtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_ImagePath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="C_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="C_Hashtag" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Views" Type="Int32" />
+          <Property Name="C_Status" Type="Int32" />
+          <Property Name="C_CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="C_ModifyAt" Type="DateTime" Precision="3" />
+          <Property Name="C_PostedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminAccount" Relationship="Self.FK_POSTEDBY" FromRole="News" ToRole="AdminAccount" />
+          <NavigationProperty Name="NewsCategory" Relationship="Self.FK__News___Category__5812160E" FromRole="News" ToRole="NewsCategory" />
+        </EntityType>
+        <EntityType Name="NewsCategory">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_IDParent" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_SlugTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_ImagePath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Priority" Type="Int32" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="News" Relationship="Self.FK__News___Category__5812160E" FromRole="NewsCategory" ToRole="News" />
+          <NavigationProperty Name="NewsCategory1" Relationship="Self.FK_PARENT_NEWS_CATEGORY" FromRole="NewsCategory" ToRole="NewsCategory1" />
+          <NavigationProperty Name="NewsCategory2" Relationship="Self.FK_PARENT_NEWS_CATEGORY" FromRole="NewsCategory1" ToRole="NewsCategory" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="C_Decription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Status" Type="Int32" />
+          <Property Name="C_Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking___Paymen__49C3F6B7" FromRole="PaymentMethod" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Cate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_SlugTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_ImagePath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_ImagePath_2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_ImagePath_3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_ImagePath_4" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Decription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="C_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="C_Price" Type="Int32" />
+          <Property Name="C_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="C_CreateBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Total" Type="Int32" />
+          <Property Name="C_Inventory" Type="Int32" />
+          <Property Name="C_CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="C_ModifyAt" Type="DateTime" Precision="3" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BookingDetails" Relationship="Self.FK__BookingDe___Prod__4D94879B" FromRole="Product" ToRole="BookingDetail" />
+          <NavigationProperty Name="ProductCategory" Relationship="Self.FK__Product___Cate__3D5E1FD2" FromRole="Product" ToRole="ProductCategory" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK__Product___Create__3E52440B" FromRole="Product" ToRole="Shop" />
+          <NavigationProperty Name="Promotions" Relationship="Self.FK__Promotion___Prod__412EB0B6" FromRole="Product" ToRole="Promotion" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_IDParent" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_SlugTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_ImagePath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_IconPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Banner" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Decription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="C_Priority" Type="Int32" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product___Cate__3D5E1FD2" FromRole="ProductCategory" ToRole="Product" />
+          <NavigationProperty Name="ChildProductCategories" Relationship="Self.FK_ParentCategory" FromRole="ProductCategory" ToRole="ProductCategory1" />
+          <NavigationProperty Name="ParentProductCategory" Relationship="Self.FK_ParentCategory" FromRole="ProductCategory1" ToRole="ProductCategory" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_Product" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Discount" Type="Int32" />
+          <Property Name="C_From" Type="DateTime" Precision="3" />
+          <Property Name="C_To" Type="DateTime" Precision="3" />
+          <Property Name="C_Status" Type="Int32" />
+          <Property Name="C_CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Promotion___Prod__412EB0B6" FromRole="Promotion" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_Add_Category" Type="Int32" />
+          <Property Name="C_Update_Category" Type="Int32" />
+          <Property Name="C_Delete_Category" Type="Int32" />
+          <Property Name="C_Approve_Product" Type="Int32" />
+          <Property Name="C_Update_Product" Type="Int32" />
+          <Property Name="C_Delete_Product" Type="Int32" />
+          <Property Name="C_Add_News" Type="Int32" />
+          <Property Name="C_Update_News" Type="Int32" />
+          <Property Name="C_Delete_News" Type="Int32" />
+          <Property Name="C_Add_Role" Type="Int32" />
+          <Property Name="C_Update_Role" Type="Int32" />
+          <Property Name="C_Delete_Role" Type="Int32" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminAccounts" Relationship="Self.FK__AdminAcco___Role__52593CB8" FromRole="Role" ToRole="AdminAccount" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_SlugTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Decription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="C_Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="C_Owner" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Product___Create__3E52440B" FromRole="Shop" ToRole="Product" />
+          <NavigationProperty Name="UserAccount" Relationship="Self.FK__Shop___Owner__38996AB5" FromRole="Shop" ToRole="UserAccount" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="C_Username" />
+          </Key>
+          <Property Name="C_Username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="C_Sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="C_Avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="C_Lastlogin" Type="DateTime" Precision="3" />
+          <Property Name="C_LastChangePassword" Type="DateTime" Precision="3" />
+          <Property Name="C_IsKYC" Type="Int32" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking___Custom__47DBAE45" FromRole="UserAccount" ToRole="Booking" />
+          <NavigationProperty Name="Shops" Relationship="Self.FK__Shop___Owner__38996AB5" FromRole="UserAccount" ToRole="Shop" />
+        </EntityType>
+        <Association Name="FK__AdminAcco___Role__52593CB8">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="AdminAccount" Type="Self.AdminAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="AdminAccount">
+              <PropertyRef Name="C_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AdminLog___By__5EBF139D">
+          <End Role="AdminAccount" Type="Self.AdminAccount" Multiplicity="0..1" />
+          <End Role="AdminLog" Type="Self.AdminLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminAccount">
+              <PropertyRef Name="C_Username" />
+            </Principal>
+            <Dependent Role="AdminLog">
+              <PropertyRef Name="C_By" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Interface___Upda__5BE2A6F2">
+          <End Role="AdminAccount" Type="Self.AdminAccount" Multiplicity="0..1" />
+          <End Role="Interface" Type="Self.Interface" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminAccount">
+              <PropertyRef Name="C_Username" />
+            </Principal>
+            <Dependent Role="Interface">
+              <PropertyRef Name="C_UpdateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSTEDBY">
+          <End Role="AdminAccount" Type="Self.AdminAccount" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminAccount">
+              <PropertyRef Name="C_Username" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="C_PostedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking___Custom__47DBAE45">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="C_Username" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="C_Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking___Delive__48CFD27E">
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="C_DeliveryBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Booking___Paymen__49C3F6B7">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="C_PaymentMethod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BookingDe___Book__4CA06362">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+          <End Role="BookingDetail" Type="Self.BookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="BookingDetail">
+              <PropertyRef Name="C_Booking" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BookingDe___Prod__4D94879B">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="BookingDetail" Type="Self.BookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="BookingDetail">
+              <PropertyRef Name="C_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__News___Category__5812160E">
+          <End Role="NewsCategory" Type="Self.NewsCategory" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsCategory">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="C_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PARENT_NEWS_CATEGORY">
+          <End Role="NewsCategory" Type="Self.NewsCategory" Multiplicity="0..1" />
+          <End Role="NewsCategory1" Type="Self.NewsCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsCategory">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="NewsCategory1">
+              <PropertyRef Name="C_IDParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product___Cate__3D5E1FD2">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="C_Cate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product___Create__3E52440B">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="C_CreateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Promotion___Prod__412EB0B6">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="Promotion">
+              <PropertyRef Name="C_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParentCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
+          <End Role="ProductCategory1" Type="Self.ProductCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="ProductCategory1">
+              <PropertyRef Name="C_IDParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shop___Owner__38996AB5">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="C_Username" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="C_Owner" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LAZABDU_VN_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminAccounts" EntityType="Self.AdminAccount" />
+          <EntitySet Name="AdminLogs" EntityType="Self.AdminLog" />
+          <EntitySet Name="Bookings" EntityType="Self.Booking" />
+          <EntitySet Name="BookingDetails" EntityType="Self.BookingDetail" />
+          <EntitySet Name="Deliveries" EntityType="Self.Delivery" />
+          <EntitySet Name="EmailMarketings" EntityType="Self.EmailMarketing" />
+          <EntitySet Name="Interfaces" EntityType="Self.Interface" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="NewsCategories" EntityType="Self.NewsCategory" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductCategories" EntityType="Self.ProductCategory" />
+          <EntitySet Name="Promotions" EntityType="Self.Promotion" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Shops" EntityType="Self.Shop" />
+          <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
+          <AssociationSet Name="FK__AdminAcco___Role__52593CB8" Association="Self.FK__AdminAcco___Role__52593CB8">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="AdminAccount" EntitySet="AdminAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AdminLog___By__5EBF139D" Association="Self.FK__AdminLog___By__5EBF139D">
+            <End Role="AdminAccount" EntitySet="AdminAccounts" />
+            <End Role="AdminLog" EntitySet="AdminLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Interface___Upda__5BE2A6F2" Association="Self.FK__Interface___Upda__5BE2A6F2">
+            <End Role="AdminAccount" EntitySet="AdminAccounts" />
+            <End Role="Interface" EntitySet="Interfaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSTEDBY" Association="Self.FK_POSTEDBY">
+            <End Role="AdminAccount" EntitySet="AdminAccounts" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking___Custom__47DBAE45" Association="Self.FK__Booking___Custom__47DBAE45">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking___Delive__48CFD27E" Association="Self.FK__Booking___Delive__48CFD27E">
+            <End Role="Delivery" EntitySet="Deliveries" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Booking___Paymen__49C3F6B7" Association="Self.FK__Booking___Paymen__49C3F6B7">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BookingDe___Book__4CA06362" Association="Self.FK__BookingDe___Book__4CA06362">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="BookingDetail" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BookingDe___Prod__4D94879B" Association="Self.FK__BookingDe___Prod__4D94879B">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="BookingDetail" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__News___Category__5812160E" Association="Self.FK__News___Category__5812160E">
+            <End Role="NewsCategory" EntitySet="NewsCategories" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PARENT_NEWS_CATEGORY" Association="Self.FK_PARENT_NEWS_CATEGORY">
+            <End Role="NewsCategory" EntitySet="NewsCategories" />
+            <End Role="NewsCategory1" EntitySet="NewsCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product___Cate__3D5E1FD2" Association="Self.FK__Product___Cate__3D5E1FD2">
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product___Create__3E52440B" Association="Self.FK__Product___Create__3E52440B">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Promotion___Prod__412EB0B6" Association="Self.FK__Promotion___Prod__412EB0B6">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Promotion" EntitySet="Promotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParentCategory" Association="Self.FK_ParentCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+            <End Role="ProductCategory1" EntitySet="ProductCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shop___Owner__38996AB5" Association="Self.FK__Shop___Owner__38996AB5">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Shop" EntitySet="Shops" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LAZABDU_VN_DBModelStoreContainer" CdmEntityContainer="LAZABDU_VN_DBEntities">
+          <EntitySetMapping Name="AdminAccounts">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.AdminAccount">
+              <MappingFragment StoreEntitySet="AdminAccount">
+                <ScalarProperty Name="C_Username" ColumnName="_Username" />
+                <ScalarProperty Name="C_Password" ColumnName="_Password" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Sex" ColumnName="_Sex" />
+                <ScalarProperty Name="C_Avatar" ColumnName="_Avatar" />
+                <ScalarProperty Name="C_Address" ColumnName="_Address" />
+                <ScalarProperty Name="C_Phone" ColumnName="_Phone" />
+                <ScalarProperty Name="C_Email" ColumnName="_Email" />
+                <ScalarProperty Name="C_Role" ColumnName="_Role" />
+                <ScalarProperty Name="C_Lastlogin" ColumnName="_Lastlogin" />
+                <ScalarProperty Name="C_LastChangePassword" ColumnName="_LastChangePassword" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminLogs">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.AdminLog">
+              <MappingFragment StoreEntitySet="AdminLog">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_By" ColumnName="_By" />
+                <ScalarProperty Name="C_Time" ColumnName="_Time" />
+                <ScalarProperty Name="C_Message" ColumnName="_Message" />
+                <ScalarProperty Name="C_Stauts" ColumnName="_Stauts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_Customer" ColumnName="_Customer" />
+                <ScalarProperty Name="C_ProdCount" ColumnName="_ProdCount" />
+                <ScalarProperty Name="C_OrderValue" ColumnName="_OrderValue" />
+                <ScalarProperty Name="C_ReceiverName" ColumnName="_ReceiverName" />
+                <ScalarProperty Name="C_ReceiverSex" ColumnName="_ReceiverSex" />
+                <ScalarProperty Name="C_ReceiverAddress" ColumnName="_ReceiverAddress" />
+                <ScalarProperty Name="C_ReceiverPhone" ColumnName="_ReceiverPhone" />
+                <ScalarProperty Name="C_ReceiverEmail" ColumnName="_ReceiverEmail" />
+                <ScalarProperty Name="C_DeliveryBy" ColumnName="_DeliveryBy" />
+                <ScalarProperty Name="C_PaymentMethod" ColumnName="_PaymentMethod" />
+                <ScalarProperty Name="C_Status" ColumnName="_Status" />
+                <ScalarProperty Name="C_Note" ColumnName="_Note" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingDetails">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.BookingDetail">
+              <MappingFragment StoreEntitySet="BookingDetail">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_Booking" ColumnName="_Booking" />
+                <ScalarProperty Name="C_Product" ColumnName="_Product" />
+                <ScalarProperty Name="C_Quantity" ColumnName="_Quantity" />
+                <ScalarProperty Name="C_Price" ColumnName="_Price" />
+                <ScalarProperty Name="C_PromotionPrice" ColumnName="_PromotionPrice" />
+                <ScalarProperty Name="C_Total" ColumnName="_Total" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deliveries">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Delivery">
+              <MappingFragment StoreEntitySet="Delivery">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Logo" ColumnName="_Logo" />
+                <ScalarProperty Name="C_Address" ColumnName="_Address" />
+                <ScalarProperty Name="C_Phone" ColumnName="_Phone" />
+                <ScalarProperty Name="C_Email" ColumnName="_Email" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailMarketings">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.EmailMarketing">
+              <MappingFragment StoreEntitySet="EmailMarketing">
+                <ScalarProperty Name="C_Email" ColumnName="_Email" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Sex" ColumnName="_Sex" />
+                <ScalarProperty Name="C_Phone" ColumnName="_Phone" />
+                <ScalarProperty Name="C_Address" ColumnName="_Address" />
+                <ScalarProperty Name="C_IPClient" ColumnName="_IPClient" />
+                <ScalarProperty Name="C_Status" ColumnName="_Status" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Interfaces">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Interface">
+              <MappingFragment StoreEntitySet="Interface">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_Location" ColumnName="_Location" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Src" ColumnName="_Src" />
+                <ScalarProperty Name="C_UpdateBy" ColumnName="_UpdateBy" />
+                <ScalarProperty Name="C_CreateAt" ColumnName="_CreateAt" />
+                <ScalarProperty Name="C_ModifyAt" ColumnName="_ModifyAt" />
+                <ScalarProperty Name="C_Status" ColumnName="_Status" />
+                <ScalarProperty Name="C_Notes" ColumnName="_Notes" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_Category" ColumnName="_Category" />
+                <ScalarProperty Name="C_Title" ColumnName="_Title" />
+                <ScalarProperty Name="C_Slugtitle" ColumnName="_Slugtitle" />
+                <ScalarProperty Name="C_ImagePath" ColumnName="_ImagePath" />
+                <ScalarProperty Name="C_Description" ColumnName="_Description" />
+                <ScalarProperty Name="C_Content" ColumnName="_Content" />
+                <ScalarProperty Name="C_Hashtag" ColumnName="_Hashtag" />
+                <ScalarProperty Name="C_Views" ColumnName="_Views" />
+                <ScalarProperty Name="C_Status" ColumnName="_Status" />
+                <ScalarProperty Name="C_CreateAt" ColumnName="_CreateAt" />
+                <ScalarProperty Name="C_ModifyAt" ColumnName="_ModifyAt" />
+                <ScalarProperty Name="C_PostedBy" ColumnName="_PostedBy" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsCategories">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.NewsCategory">
+              <MappingFragment StoreEntitySet="NewsCategory">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_IDParent" ColumnName="_IDParent" />
+                <ScalarProperty Name="C_Title" ColumnName="_Title" />
+                <ScalarProperty Name="C_SlugTitle" ColumnName="_SlugTitle" />
+                <ScalarProperty Name="C_ImagePath" ColumnName="_ImagePath" />
+                <ScalarProperty Name="C_Description" ColumnName="_Description" />
+                <ScalarProperty Name="C_Priority" ColumnName="_Priority" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Decription" ColumnName="_Decription" />
+                <ScalarProperty Name="C_Status" ColumnName="_Status" />
+                <ScalarProperty Name="C_Note" ColumnName="_Note" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_Cate" ColumnName="_Cate" />
+                <ScalarProperty Name="C_Title" ColumnName="_Title" />
+                <ScalarProperty Name="C_SlugTitle" ColumnName="_SlugTitle" />
+                <ScalarProperty Name="C_ImagePath" ColumnName="_ImagePath" />
+                <ScalarProperty Name="C_ImagePath_2" ColumnName="_ImagePath_2" />
+                <ScalarProperty Name="C_ImagePath_3" ColumnName="_ImagePath_3" />
+                <ScalarProperty Name="C_ImagePath_4" ColumnName="_ImagePath_4" />
+                <ScalarProperty Name="C_Decription" ColumnName="_Decription" />
+                <ScalarProperty Name="C_Content" ColumnName="_Content" />
+                <ScalarProperty Name="C_Price" ColumnName="_Price" />
+                <ScalarProperty Name="C_Unit" ColumnName="_Unit" />
+                <ScalarProperty Name="C_CreateBy" ColumnName="_CreateBy" />
+                <ScalarProperty Name="C_Total" ColumnName="_Total" />
+                <ScalarProperty Name="C_Inventory" ColumnName="_Inventory" />
+                <ScalarProperty Name="C_CreateAt" ColumnName="_CreateAt" />
+                <ScalarProperty Name="C_ModifyAt" ColumnName="_ModifyAt" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategories">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_IDParent" ColumnName="_IDParent" />
+                <ScalarProperty Name="C_Title" ColumnName="_Title" />
+                <ScalarProperty Name="C_SlugTitle" ColumnName="_SlugTitle" />
+                <ScalarProperty Name="C_ImagePath" ColumnName="_ImagePath" />
+                <ScalarProperty Name="C_IconPath" ColumnName="_IconPath" />
+                <ScalarProperty Name="C_Banner" ColumnName="_Banner" />
+                <ScalarProperty Name="C_Decription" ColumnName="_Decription" />
+                <ScalarProperty Name="C_Priority" ColumnName="_Priority" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promotions">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Promotion">
+              <MappingFragment StoreEntitySet="Promotion">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_Product" ColumnName="_Product" />
+                <ScalarProperty Name="C_Title" ColumnName="_Title" />
+                <ScalarProperty Name="C_Discount" ColumnName="_Discount" />
+                <ScalarProperty Name="C_From" ColumnName="_From" />
+                <ScalarProperty Name="C_To" ColumnName="_To" />
+                <ScalarProperty Name="C_Status" ColumnName="_Status" />
+                <ScalarProperty Name="C_CreateAt" ColumnName="_CreateAt" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Add_Category" ColumnName="_Add_Category" />
+                <ScalarProperty Name="C_Update_Category" ColumnName="_Update_Category" />
+                <ScalarProperty Name="C_Delete_Category" ColumnName="_Delete_Category" />
+                <ScalarProperty Name="C_Approve_Product" ColumnName="_Approve_Product" />
+                <ScalarProperty Name="C_Update_Product" ColumnName="_Update_Product" />
+                <ScalarProperty Name="C_Delete_Product" ColumnName="_Delete_Product" />
+                <ScalarProperty Name="C_Add_News" ColumnName="_Add_News" />
+                <ScalarProperty Name="C_Update_News" ColumnName="_Update_News" />
+                <ScalarProperty Name="C_Delete_News" ColumnName="_Delete_News" />
+                <ScalarProperty Name="C_Add_Role" ColumnName="_Add_Role" />
+                <ScalarProperty Name="C_Update_Role" ColumnName="_Update_Role" />
+                <ScalarProperty Name="C_Delete_Role" ColumnName="_Delete_Role" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shops">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Shop">
+              <MappingFragment StoreEntitySet="Shop">
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+                <ScalarProperty Name="C_Title" ColumnName="_Title" />
+                <ScalarProperty Name="C_SlugTitle" ColumnName="_SlugTitle" />
+                <ScalarProperty Name="C_Decription" ColumnName="_Decription" />
+                <ScalarProperty Name="C_Avatar" ColumnName="_Avatar" />
+                <ScalarProperty Name="C_Address" ColumnName="_Address" />
+                <ScalarProperty Name="C_Phone" ColumnName="_Phone" />
+                <ScalarProperty Name="C_Email" ColumnName="_Email" />
+                <ScalarProperty Name="C_CreateAt" ColumnName="_CreateAt" />
+                <ScalarProperty Name="C_Owner" ColumnName="_Owner" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="C_Username" ColumnName="_Username" />
+                <ScalarProperty Name="C_Password" ColumnName="_Password" />
+                <ScalarProperty Name="C_Name" ColumnName="_Name" />
+                <ScalarProperty Name="C_Sex" ColumnName="_Sex" />
+                <ScalarProperty Name="C_Avatar" ColumnName="_Avatar" />
+                <ScalarProperty Name="C_Address" ColumnName="_Address" />
+                <ScalarProperty Name="C_Phone" ColumnName="_Phone" />
+                <ScalarProperty Name="C_Email" ColumnName="_Email" />
+                <ScalarProperty Name="C_Lastlogin" ColumnName="_Lastlogin" />
+                <ScalarProperty Name="C_LastChangePassword" ColumnName="_LastChangePassword" />
+                <ScalarProperty Name="C_IsKYC" ColumnName="_IsKYC" />
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

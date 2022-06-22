@@ -1,0 +1,73 @@
+﻿@{
+    var parentCategories = (List<LAZABDU.Models.ProductCategory>)ViewBag.parentCategories;
+}
+<div class="pushmenu menu-home5">
+    <div class="menu-push">
+        <span class="close-left js-close"><i class="fa fa-times f-20"></i></span>
+        <div class="clearfix"></div>
+        <form role="search" method="get" id="searchform" class="searchform" action="/search">
+            <div>
+                <label class="screen-reader-text" for="q"></label>
+                <input type="text" placeholder="Search for products" value="" name="q" id="q" autocomplete="off">
+                <input type="hidden" name="type" value="product">
+                <button type="submit" id="searchsubmit"><i class="ion-ios-search-strong"></i></button>
+            </div>
+        </form>
+        <ul class="nav-home5 js-menubar">
+            <li class="level1 active dropdown">
+                <a href="#">Trang chủ</a>
+            </li>
+            <li class="level1 active dropdown">
+                <a href="#">Shop</a>
+                <span class="icon-sub-menu"></span>
+                <div class="menu-level1 js-open-menu">
+                    <ul class="level1">
+                        @foreach (var parentCategory in parentCategories)
+                        {
+                            <li class="level2">
+                                <a href="#">@Html.Raw(parentCategory.C_Title)</a>
+                                <ul class="menu-level-2">
+                                    @foreach (var childCategory in parentCategory.ChildProductCategories)
+                                    {
+                                        <li class="level3"><a href="#0" title="@Html.Raw(childCategory.C_Title)">@Html.Raw(childCategory.C_Title)</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </li>
+            <li class="level1">
+                <a href="#">Tin tức</a>
+                <span class="icon-sub-menu"></span>
+                <ul class="menu-level1 js-open-menu">
+                    <li class="level2"><a href="about.html" title="About Us ">Bản tin mới nhất</a></li>
+                    <li class="level2"><a href="contact.html" title="Contact">Hoạt dộng kinh doanh</a></li>
+                    <li class="level2"><a href="404.html" title="404">Tiếp Thị Liên Kết</a></li>
+                    <li class="level2"><a href="404.html" title="404">Kinh nghiệm bán hàng</a></li>
+                </ul>
+            </li>
+            <li class="level1">
+                <a href="#">Dịch vụ</a>
+                <span class="icon-sub-menu"></span>
+                <ul class="menu-level1 js-open-menu">
+                    <li class="level2"><a href="blog.html" title="Blog Standar">Hướng dẫn đặt hàng</a></li>
+                    <li class="level2"><a href="blogdetail.html" title="Blog Gird">Giao hàng miễn phí</a></li>
+                    <li class="level2"><a href="blogdetail.html" title="Blog Gird">Giới thiệu</a></li>
+                    <li class="level2"><a href="blogdetail.html" title="Blog Gird">Liên hệ</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="menu-mobile-left-content menu-bg-white">
+    <ul>
+        <li><a href="#"><img src="~/Content/public/img/icon_hot_gray.png" alt="Icon Hot Deals" /> <p>Hot Deals</p></a></li>
+        @foreach (var item in parentCategories)
+        {
+            <li><a href="#"><img src="@item.C_IconPath" alt="Icon @Html.Raw(item.C_Title)" /> <p>@Html.Raw(item.C_Title)</p></a></li>
+        }
+        <li><a href="#"><img src="~/Content/public/img/icon_voucher_gray.png" alt="Icon Phiếu giảm giá" /> <p>Phiếu giảm giá</p></a></li>
+    </ul>
+</div>
