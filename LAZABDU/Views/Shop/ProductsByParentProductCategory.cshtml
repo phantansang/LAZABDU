@@ -1,0 +1,91 @@
+﻿@model PagedList.IPagedList<LAZABDU.Models.Product>
+@using PagedList.Mvc;
+@{
+    Layout = "/Views/Shared/MasterView.cshtml";
+}
+@section OpenGraph{
+    <title>@Html.Raw(Model.FirstOrDefault().ProductCategory.ParentProductCategory.C_Title) | Siêu thị tiện lợi cho mọi nhà</title>
+}
+@section Style{
+    <link rel="stylesheet" type="text/css" href="~/Content/public/css/category.css">
+}
+<div class="relative full-width">
+    <!-- Breadcrumb -->
+    <div class="container-web relative">
+        <div class="container">
+            <div class="row">
+                <div class="breadcrumb-web">
+                    <ul class="clear-margin">
+                        <li class="animate-default title-hover-red"><a href="/">Trang chủ</a></li>
+                        <li class="animate-default title-hover-red"><a href="@Url.Action("Index", "Shop")">Mua sắm</a></li>
+                        <li class="animate-default title-hover-red">@Html.Raw(Model.FirstOrDefault().ProductCategory.ParentProductCategory.C_Title)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumb -->
+    <!-- Content Category -->
+    <div class="relative container-web">
+        <div class="container">
+            <div class="row ">
+                <!-- Content Category -->
+                <div class="col-md-9 relative clear-padding">
+                    <div class="col-sm-12 col-xs-12 relative overfollow-hidden clear-padding button-show-sidebar">
+                        <p onclick="showSideBar()"><span class="ti-filter"></span> Sidebar</p>
+                    </div>
+                    <div class="banner-top-category-page bottom-margin-default effect-bubba zoom-image-hover overfollow-hidden relative full-width">
+                        <img src="~/Content/public/img/image_banner_category_1-min.png" alt="" />
+                        <a href="#"></a>
+                    </div>
+                    <div class="bar-category bottom-margin-default border no-border-r no-border-l no-border-t">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5 col-xs-4">
+                                <p class="title-category-page clear-margin">@Html.Raw(Model.FirstOrDefault().ProductCategory.ParentProductCategory.C_Title)</p>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-8 right-category-bar float-right relative">
+                                <p class=" float-left">Hiển thị  @(Model.PageNumber == 1 ? 1 : (Model.PageNumber-1)*Model.PageSize+1) – @(Model.PageNumber*Model.PageSize) trên @ViewBag.Count sản phẩm</p>
+                                <a class=" float-left active-view-bar"><span class="icon-bar-category border ti-layout-grid3"></span></a>
+                                <a class=" float-left" onClick="alert('List view đang được cập nhật !')"><span class="icon-bar-category border ti-layout-list-thumb"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Content Category -->
+                    <div class="row">
+                        @foreach (var _product in Model)
+                        {
+                            <div class="col-md-4 col-sm-4 col-xs-12 product-category relative effect-hover-boxshadow animate-default">
+                                <div class="image-product relative overfollow-hidden">
+                                    <div class="center-vertical-image">
+                                        <img src="/Content/public/img/product_home_30-min.png" alt="Product">
+                                    </div>
+                                    <a href="#"></a>
+                                    <ul class="option-product animate-default">
+                                        <li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                        <li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
+                                        <li class="relative"><a href="javascript:;"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                                <h3 class="title-product clearfix full-width title-hover-black"><a href="#">@Html.Raw(_product.C_Title)</a></h3>
+                                <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                <div class="clearfix location-product-category">
+                                    <p><i class="fas fa-map-marker-alt"></i> @(_product.Shop != null ? _product.Shop.C_Province : "NoneShop")</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="row">
+                        <div class="pagging relative">
+                            @Html.PagedListPager(Model, page => Url.Action("ProductsByParentProductCategory", "Shop", new { Slug = ViewBag.Slug, CateID = ViewBag.CateID, page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+                        </div>
+                    </div>
+                    <!-- End Product Content Category -->
+                </div>
+                <!-- Sider Bar -->
+                @Html.Action("MasterSiderbar", "Shop")
+                <!-- End Sider Bar Box -->
+            </div>
+        </div>
+    </div>
+    <!-- End Sider Bar -->
+</div>

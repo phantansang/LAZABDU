@@ -115,10 +115,10 @@
                 <ul class="clear-margin">
                     <li onclick="showMenuHomeV3()"><a class="animate-default" href="#"><i class="fa fa-list" aria-hidden="true"></i> Danh mục sản phẩm</a></li>
                     <li class="title-hover-red">
-                        <a class="animate-default" href="#">Trang chủ</a>
+                        <a class="animate-default" href="/">Trang chủ</a>
                     </li>
                     <li class="title-hover-red">
-                        <a class="animate-default" href="#">Mua sắm</a>
+                        <a class="animate-default" href="@Url.Action("Index","Shop")">Mua sắm</a>
                         <div class="sub-menu mega-menu-v2">
                             @foreach (var parentCategory in parentCategories)
                             {
@@ -126,7 +126,7 @@
                                     <li>@Html.Raw(parentCategory.C_Title)</li>
                                     @foreach (var childCategory in parentCategory.ChildProductCategories.Take(5))
                                     {
-                                        <li class="title-hover-red"><a class="animate-default clear-padding" href="category_v1.html">@childCategory.C_Title</a></li>
+                                        <li class="title-hover-red"><a class="animate-default clear-padding" href="@Url.Action("ProductsByProductCategory","Shop", new {Slug = childCategory.C_SlugTitle, CateID = childCategory.C_ID })">@childCategory.C_Title</a></li>
                                     }
                                 </ul>
                             }
@@ -178,10 +178,10 @@
                 <div class="menu-header">
                     <ul class="main__menu clear-margin">
                         <li class="title-hover-red">
-                            <a class="animate-default" href="#">Trang chủ</a>
+                            <a class="animate-default" href="/">Trang chủ</a>
                         </li>
                         <li class="title-hover-red">
-                            <a class="animate-default" href="#">Mua sắm</a>
+                            <a class="animate-default" href="@Url.Action("Index","Shop")">Mua sắm</a>
                             <div class="sub-menu mega-menu-v2">
                                 @foreach (var parentCategory in parentCategories)
                                 {
@@ -189,7 +189,7 @@
                                         <li>@Html.Raw(parentCategory.C_Title)</li>
                                         @foreach (var childCategory in parentCategory.ChildProductCategories.Take(5))
                                         {
-                                            <li class="title-hover-red"><a class="animate-default clear-padding" href="category_v1.html">@childCategory.C_Title</a></li>
+                                            <li class="title-hover-red"><a class="animate-default clear-padding" href="@Url.Action("ProductsByProductCategory","Shop", new {Slug = childCategory.C_SlugTitle, CateID = childCategory.C_ID })">@childCategory.C_Title</a></li>
                                         }
                                     </ul>
                                 }

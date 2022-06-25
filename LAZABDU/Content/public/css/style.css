@@ -1448,6 +1448,11 @@ header{
     float: right;
     margin: 12px 0 0 0;
 }
+
+.location-product-category {
+    float: right;
+    margin: 12px 0 0 0;
+}
 .product-category .image-product {
     height: 100%;
     max-width: 270px;
@@ -1469,22 +1474,22 @@ header{
     border: 1px solid #e3171b;
 }
 /*-- CSS Pagging --*/
-.pagging {
+.pagination-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin: 70px 0;
 }
-.pagging ul li {
+.pagination-container ul li {
     float: left;
     list-style: none;
     margin: 0 5px;
     box-sizing: border-box;
 }
-.pagging ul li a{
+.pagination-container ul li a{
 	width: 40px;
 	text-align: center;
-	line-height: 38px;
+	line-height: 30px;
 	border:1px solid #dedede;
 	display: block;
 	color: #232323;
@@ -1494,11 +1499,11 @@ header{
 	-moz-transition: 0.5s ease;
 	-webkit-transition: 0.5s ease;
 }
-.pagging ul li:last-child a,.pagging ul li:first-child a{
-	padding:0 20px;
+.pagination-container ul li:last-child a,.pagination-container ul li:first-child a{
+	padding:6px 20px;
 	width: auto;
 }
-.pagging ul li a:hover,.active-pagging a{
+.pagination-container ul li a:hover,.active-pagging a{
 	color: #fff !important;
 	background: #eb1a21;
 	text-decoration: none;

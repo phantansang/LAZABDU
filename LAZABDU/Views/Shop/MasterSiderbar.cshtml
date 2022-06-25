@@ -1,0 +1,169 @@
+﻿@{ 
+    var parentCategories = (List<LAZABDU.Models.ProductCategory>)ViewBag.parentCategories;
+    var provinces = (List<String>)ViewBag.provinces;
+}
+<div class="col-md-3 relative left-padding-default clear-padding" id="slide-bar-category">
+    <div class="col-md-12 col-sm-12 col-xs-12 sider-bar-category border bottom-margin-default">
+        <p class="title-siderbar bold">DANH MỤC</p>
+        <ul class="clear-margin list-siderbar">
+            @foreach (var category in parentCategories)
+            {
+                <li><a href="@Url.Action("ProductsByParentProductCategory", "Shop", new {Slug = category.C_SlugTitle, CateID = category.C_ID })">@Html.Raw(category.C_Title)</a></li>
+            }
+        </ul>
+    </div>
+    <div class="col-sm-12 col-sm-12 col-xs-12 sider-bar-category border bottom-margin-default">
+        <p class="title-siderbar bold">NƠI BÁN</p>
+        <ul class="check-box-custom clear-margin clear-margin">
+            @foreach (var _province in provinces)
+            {
+                <li>
+                    <label>
+                        @_province
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 relative border bottom-margin-default sider-bar-category">
+        <div class="relative border no-border-t no-border-l no-border-r bottom-padding-default">
+            <p class="title-siderbar bold">GIÁ TIỀN</p>
+            <ul class="check-box-custom clear-margin clear-margin">
+                <li>
+                    <label>
+                        Dưới 1,000,000
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Từ 1,000,000 - 2,000,000
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Từ 2,000,000 - 4,000,000
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Từ 4,000,000 đến 6,000,000
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Từ 6,000,000 đến 8,000,000
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Từ 8,000,000 đến 10,000,000
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        Trên 10,000,000
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <div class="relative border no-border-t no-border-l no-border-r bottom-padding-default">
+            <p class="title-siderbar bold top-padding-default">color</p>
+            <ul class="check-box-custom list-color clearfix clear-margin">
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom-margin-default banner-siderbar col-md-12 col-sm-12 col-xs-12 clear-padding clearfix">
+        <div class="overfollow-hidden banners-effect5 relative center-vertical-image">
+            <img src="/Content/public/img/banner_siderbar-min.png" alt="Siderbar" />
+            <a href="#"></a>
+        </div>
+    </div>
+</div>

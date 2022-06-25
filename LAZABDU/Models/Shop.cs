@@ -31,6 +31,7 @@ namespace LAZABDU.Models
         public Nullable<System.DateTime> C_CreateAt { get; set; }
         public string C_Owner { get; set; }
         public string C_Logs { get; set; }
+        public string C_Province { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

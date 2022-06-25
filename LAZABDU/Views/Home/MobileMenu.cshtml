@@ -15,10 +15,10 @@
         </form>
         <ul class="nav-home5 js-menubar">
             <li class="level1 active dropdown">
-                <a href="#">Trang chủ</a>
+                <a href="/">Trang chủ</a>
             </li>
             <li class="level1 active dropdown">
-                <a href="#">Shop</a>
+                <a href="@Url.Action("Index","Shop")">Mua sắm</a>
                 <span class="icon-sub-menu"></span>
                 <div class="menu-level1 js-open-menu">
                     <ul class="level1">
@@ -29,7 +29,7 @@
                                 <ul class="menu-level-2">
                                     @foreach (var childCategory in parentCategory.ChildProductCategories)
                                     {
-                                        <li class="level3"><a href="#0" title="@Html.Raw(childCategory.C_Title)">@Html.Raw(childCategory.C_Title)</a></li>
+                                        <li class="level3"><a href="@Url.Action("ProductsByProductCategory","Shop", new {Slug = childCategory.C_SlugTitle, CateID = childCategory.C_ID })" title="@Html.Raw(childCategory.C_Title)">@Html.Raw(childCategory.C_Title)</a></li>
                                     }
                                 </ul>
                             </li>
@@ -66,7 +66,7 @@
         <li><a href="#"><img src="~/Content/public/img/icon_hot_gray.png" alt="Icon Hot Deals" /> <p>Hot Deals</p></a></li>
         @foreach (var item in parentCategories)
         {
-            <li><a href="#"><img src="@item.C_IconPath" alt="Icon @Html.Raw(item.C_Title)" /> <p>@Html.Raw(item.C_Title)</p></a></li>
+            <li><a href="@Url.Action("ProductsByParentProductCategory","Shop", new {Slug = item.C_SlugTitle, CateID = item.C_ID })"><img src="@item.C_IconPath" alt="Icon @Html.Raw(item.C_Title)" /> <p>@Html.Raw(item.C_Title)</p></a></li>
         }
         <li><a href="#"><img src="~/Content/public/img/icon_voucher_gray.png" alt="Icon Phiếu giảm giá" /> <p>Phiếu giảm giá</p></a></li>
     </ul>

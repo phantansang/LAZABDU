@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LAZABDU_VN_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LAZABDU_VN_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdminAccount">
           <Key>
             <PropertyRef Name="_Username" />
@@ -228,6 +228,7 @@
           <Property Name="_SlugTitle" Type="nvarchar" MaxLength="200" />
           <Property Name="_Decription" Type="nvarchar" MaxLength="500" />
           <Property Name="_Avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Province" Type="nvarchar" MaxLength="50" />
           <Property Name="_Address" Type="nvarchar" MaxLength="200" />
           <Property Name="_Phone" Type="varchar" MaxLength="20" />
           <Property Name="_Email" Type="varchar" MaxLength="50" />
@@ -526,8 +527,7 @@
             <End Role="News" EntitySet="News" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LAZABDU_VN_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -790,6 +790,7 @@
           <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK__Product___Create__3E52440B" FromRole="Shop" ToRole="Product" />
           <NavigationProperty Name="UserAccount" Relationship="Self.FK__Shop___Owner__38996AB5" FromRole="Shop" ToRole="UserAccount" />
+          <Property Name="C_Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -1321,6 +1322,7 @@
           <EntitySetMapping Name="Shops">
             <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Shop">
               <MappingFragment StoreEntitySet="Shop">
+                <ScalarProperty Name="C_Province" ColumnName="_Province" />
                 <ScalarProperty Name="C_ID" ColumnName="_ID" />
                 <ScalarProperty Name="C_Title" ColumnName="_Title" />
                 <ScalarProperty Name="C_SlugTitle" ColumnName="_SlugTitle" />

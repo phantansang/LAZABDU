@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<LAZABDU.Models.Product>
+@{
     Layout = "/Views/Shared/MasterView.cshtml";
     var parentCategories = (List<LAZABDU.Models.ProductCategory>)ViewBag.prentCategories;
     var childCategories = (List<LAZABDU.Models.ProductCategory>)ViewBag.childCategories;
@@ -462,9 +463,9 @@
                                 </div>
                                 <!-- Content Product Box -->
                                 <div class="clearfix product-percent-content border-collapsed-box full-width">
-                                    @if (_category.Products.Count > 0)
+                                    @if (Model.Where(R=>R.ProductCategory.ParentProductCategory.C_ID == _category.C_ID).Count() > 0)
                                     {
-                                        foreach (var _product in _category.Products.Take(6))
+                                        foreach (var _product in Model.Where(R => R.ProductCategory.ParentProductCategory.C_ID == _category.C_ID).Take(6))
                                         {
                                             <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-3">
                                                 <div class="effect-hover-zoom center-vertical-image">
@@ -494,7 +495,6 @@
                                             </div>
                                         }
                                     }
-
                                 </div>
                             </div>
                         }
