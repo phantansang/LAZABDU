@@ -1,10 +1,11 @@
 ﻿@model PagedList.IPagedList<LAZABDU.Models.Product>
 @using PagedList.Mvc;
 @{
+    var category = (LAZABDU.Models.ProductCategory)ViewBag.category;
     Layout = "/Views/Shared/MasterView.cshtml";
 }
 @section OpenGraph{
-    <title>@Html.Raw(Model.FirstOrDefault().ProductCategory.ParentProductCategory.C_Title) | Siêu thị tiện lợi cho mọi nhà</title>
+    <title>@Html.Raw(category.C_Title) | Siêu thị tiện lợi cho mọi nhà</title>
 }
 @section Style{
     <link rel="stylesheet" type="text/css" href="~/Content/public/css/category.css">
@@ -18,7 +19,7 @@
                     <ul class="clear-margin">
                         <li class="animate-default title-hover-red"><a href="/">Trang chủ</a></li>
                         <li class="animate-default title-hover-red"><a href="@Url.Action("Index", "Shop")">Mua sắm</a></li>
-                        <li class="animate-default title-hover-red">@Html.Raw(Model.FirstOrDefault().ProductCategory.ParentProductCategory.C_Title)</li>
+                        <li class="animate-default title-hover-red">@Html.Raw(category.C_Title)</li>
                     </ul>
                 </div>
             </div>
@@ -41,7 +42,7 @@
                     <div class="bar-category bottom-margin-default border no-border-r no-border-l no-border-t">
                         <div class="row">
                             <div class="col-md-5 col-sm-5 col-xs-4">
-                                <p class="title-category-page clear-margin">@Html.Raw(Model.FirstOrDefault().ProductCategory.ParentProductCategory.C_Title)</p>
+                                <p class="title-category-page clear-margin">@Html.Raw(category.C_Title)</p>
                             </div>
                             <div class="col-md-5 col-sm-5 col-xs-8 right-category-bar float-right relative">
                                 <p class=" float-left">Hiển thị  @(Model.PageNumber == 1 ? 1 : (Model.PageNumber-1)*Model.PageSize+1) – @(Model.PageNumber*Model.PageSize) trên @ViewBag.Count sản phẩm</p>
@@ -52,31 +53,40 @@
                     </div>
                     <!-- Product Content Category -->
                     <div class="row">
-                        @foreach (var _product in Model)
+                        @if (Model.Count() > 0)
                         {
-                            <div class="col-md-4 col-sm-4 col-xs-12 product-category relative effect-hover-boxshadow animate-default">
-                                <div class="image-product relative overfollow-hidden">
-                                    <div class="center-vertical-image">
-                                        <img src="/Content/public/img/product_home_30-min.png" alt="Product">
+                            foreach (var _product in Model)
+                            {
+                                <div class="col-md-4 col-sm-4 col-xs-12 product-category relative effect-hover-boxshadow animate-default">
+                                    <div class="image-product relative overfollow-hidden">
+                                        <div class="center-vertical-image">
+                                            <img src="/Content/public/img/product_home_30-min.png" alt="Product">
+                                        </div>
+                                        <a href="#"></a>
+                                        <ul class="option-product animate-default">
+                                            <li class="relative"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                            <li class="relative"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
+                                            <li class="relative"><a href="javascript:;"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
+                                        </ul>
                                     </div>
-                                    <a href="#"></a>
-                                    <ul class="option-product animate-default">
-                                        <li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
-                                        <li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
-                                        <li class="relative"><a href="javascript:;"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
-                                    </ul>
+                                    <h3 class="title-product clearfix full-width title-hover-black"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })">@Html.Raw(_product.C_Title)</a></h3>
+                                    <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                    <div class="clearfix location-product-category">
+                                        <p><i class="fas fa-map-marker-alt"></i> @(_product.Shop != null ? _product.Shop.C_Province : "NoneShop")</p>
+                                    </div>
                                 </div>
-                                <h3 class="title-product clearfix full-width title-hover-black"><a href="#">@Html.Raw(_product.C_Title)</a></h3>
-                                <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
-                                <div class="clearfix location-product-category">
-                                    <p><i class="fas fa-map-marker-alt"></i> @(_product.Shop != null ? _product.Shop.C_Province : "NoneShop")</p>
-                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="col-lg-12">
+                                <p>Danh sách sản phẩm trống !</p>
                             </div>
                         }
                     </div>
                     <div class="row">
                         <div class="pagging relative">
-                            @Html.PagedListPager(Model, page => Url.Action("ProductsByParentProductCategory", "Shop", new { Slug = ViewBag.Slug, CateID = ViewBag.CateID, page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+                            @Html.PagedListPager(Model, page => Url.Action("ProductsByParentProductCategory", "Shop", new { Slug = category.C_SlugTitle, CateID = category.C_ID, page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
                         </div>
                     </div>
                     <!-- End Product Content Category -->

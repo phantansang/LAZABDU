@@ -143,7 +143,7 @@ a,a:hover,a:focus{
 	align-items: center;
 }
 .center-vertical-image img{
-	max-width: 100%;
+	max-width: 95%;
 	max-height: 100%;
 	margin: 0 auto;
 }
@@ -727,7 +727,7 @@ header{
 }
 @media(min-width:1025px){
 	.search-box{
-		width:825px;
+		width:785px;
 	}
 }
 .icon-search-mobile {

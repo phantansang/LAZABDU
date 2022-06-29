@@ -37,7 +37,7 @@
                     <i class="data-icon data-icon-arrows icon-arrows-hamburger-2 icon-pushmenu js-push-menu"></i>
                 </div>
                 <div class="clearfix logo">
-                    <a href="#"><img alt="Logo" src="~/Content/public/img/logo.png" /></a>
+                    <a href="/"><img alt="Logo" src="~/Content/public/img/logo.png" /></a>
                 </div>
                 <div class="clearfix search-box relative float-left">
                     <form method="GET" action="/" class="">
@@ -161,7 +161,7 @@
         <li><a href="#"><img src="~/Content/public/img/icon_hot_gray.png" alt="Icon Hot Deals" /> <p>Hot Deals</p></a></li>
         @foreach (var category in parentCategories)
         {
-            <li><a href="#"><img src="@category.C_IconPath" alt="Icon @category.C_Title" /> <p>@category.C_Title</p></a></li>
+            <li><a href="@Url.Action("ProductsByParentProductCategory", "Shop", new {Slug = category.C_SlugTitle, CateID = category.C_ID })"><img src="@category.C_IconPath" alt="Icon @category.C_Title" /> <p>@category.C_Title</p></a></li>
         }
         <li><a href="#"><img src="~/Content/public/img/icon_voucher_gray.png" alt="Icon Phiếu giảm giá" /> <p>Phiếu giảm giá</p></a></li>
     </ul>
@@ -171,7 +171,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="clearfix logo">
-                    <a href="#"><img alt="Logo" src="~/Content/public/img/logo.png" style="display: inline-block;padding-top: 10px;" /></a>
+                    <a href="/"><img alt="Logo" src="~/Content/public/img/logo.png" style="display: inline-block;padding-top: 10px;" /></a>
                 </div>
             </div>
             <div class="col-md-9">

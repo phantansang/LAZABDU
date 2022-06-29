@@ -1,4 +1,5 @@
 ﻿@{ 
+    var bestsellersProducts = (List<LAZABDU.Models.Product>)ViewBag.bestsellersProducts;
     var parentCategories = (List<LAZABDU.Models.ProductCategory>)ViewBag.parentCategories;
     var provinces = (List<String>)ViewBag.provinces;
 }
@@ -54,21 +55,21 @@
                 </li>
                 <li>
                     <label>
-                        Từ 4,000,000 đến 6,000,000
+                        Từ 4,000,000 - 6,000,000
                         <input type="checkbox">
                         <span class="checkmark"></span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        Từ 6,000,000 đến 8,000,000
+                        Từ 6,000,000 - 8,000,000
                         <input type="checkbox">
                         <span class="checkmark"></span>
                     </label>
                 </li>
                 <li>
                     <label>
-                        Từ 8,000,000 đến 10,000,000
+                        Từ 8,000,000 - 10,000,000
                         <input type="checkbox">
                         <span class="checkmark"></span>
                     </label>
@@ -159,6 +160,21 @@
                 </li>
             </ul>
         </div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 relative border bottom-margin-default sider-bar-category">
+        <p class="title-siderbar bold bottom-margin-15-default">BÁN CHẠY</p>
+        @foreach (var _product in bestsellersProducts)
+        {
+            <div class="clearfix relative best-sellers-product">
+                <div class="image-product-sellers-sidebar float-left">
+                    <a href="#"><img src="~/Content/public/img/product_image_6-min.png" alt="@Html.Raw(_product.C_Title)"></a>
+                </div>
+                <div class="info-product-sellers-sidebar float-left">
+                    <p class="title-product-sellers-sidebar title-hover-black"><a class="animate-default" href="#">@Html.Raw(_product.C_Title)</a></p>
+                    <p class="clearfix price-product" style="font-size: 14px"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                </div>
+            </div>
+        }
     </div>
     <div class="bottom-margin-default banner-siderbar col-md-12 col-sm-12 col-xs-12 clear-padding clearfix">
         <div class="overfollow-hidden banners-effect5 relative center-vertical-image">

@@ -58,14 +58,14 @@
                                     <div class="center-vertical-image">
                                         <img src="/Content/public/img/product_home_30-min.png" alt="Product">
                                     </div>
-                                    <a href="#"></a>
+                                    <a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })"></a>
                                     <ul class="option-product animate-default">
-                                        <li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
-                                        <li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
+                                        <li class="relative"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                        <li class="relative"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
                                         <li class="relative"><a href="javascript:;"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
-                                <h3 class="title-product clearfix full-width title-hover-black"><a href="#">@Html.Raw(_product.C_Title)</a></h3>
+                                <h3 class="title-product clearfix full-width title-hover-black"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })">@Html.Raw(_product.C_Title)</a></h3>
                                 <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
                                 <div class="clearfix location-product-category">
                                     <p><i class="fas fa-map-marker-alt"></i> @(_product.Shop != null ? _product.Shop.C_Province : "NoneShop")</p>

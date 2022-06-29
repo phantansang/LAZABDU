@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="763c4132925745daa76ed963e65090cb" Name="Diagram1" ZoomLevel="94">
+      <Diagram DiagramId="763c4132925745daa76ed963e65090cb" Name="Diagram1" ZoomLevel="45">
         <EntityTypeShape EntityType="LAZABDU_VN_DBModel.AdminAccount" Width="1.5" PointX="12" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="LAZABDU_VN_DBModel.AdminLog" Width="1.5" PointX="14.25" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Booking" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Booking" Width="1.5" PointX="4.125" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LAZABDU_VN_DBModel.BookingDetail" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Delivery" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Delivery" Width="1.5" PointX="0.625" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="LAZABDU_VN_DBModel.EmailMarketing" Width="1.5" PointX="2.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Interface" Width="1.5" PointX="14.25" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="LAZABDU_VN_DBModel.News" Width="1.5" PointX="17.25" PointY="6.25" IsExpanded="true" />

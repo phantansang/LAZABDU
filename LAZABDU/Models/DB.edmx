@@ -160,6 +160,7 @@
           <Property Name="_ImagePath_3" Type="nvarchar" MaxLength="200" />
           <Property Name="_ImagePath_4" Type="nvarchar" MaxLength="200" />
           <Property Name="_Decription" Type="nvarchar" MaxLength="500" />
+          <Property Name="_Productdetails" Type="nvarchar(max)" />
           <Property Name="_Content" Type="nvarchar(max)" />
           <Property Name="_Price" Type="int" />
           <Property Name="_Unit" Type="nvarchar" MaxLength="50" />
@@ -168,6 +169,10 @@
           <Property Name="_Inventory" Type="int" />
           <Property Name="_CreateAt" Type="datetime" />
           <Property Name="_ModifyAt" Type="datetime" />
+          <Property Name="_IsApproved" Type="int" />
+          <Property Name="_IsShow" Type="int" />
+          <Property Name="_IsDeleted" Type="int" />
+          <Property Name="_Views" Type="nchar" MaxLength="10" />
           <Property Name="_Logs" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ProductCategory">
@@ -718,6 +723,11 @@
           <NavigationProperty Name="ProductCategory" Relationship="Self.FK__Product___Cate__3D5E1FD2" FromRole="Product" ToRole="ProductCategory" />
           <NavigationProperty Name="Shop" Relationship="Self.FK__Product___Create__3E52440B" FromRole="Product" ToRole="Shop" />
           <NavigationProperty Name="Promotions" Relationship="Self.FK__Promotion___Prod__412EB0B6" FromRole="Product" ToRole="Promotion" />
+          <Property Name="C_Views" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="C_IsApproved" Type="Int32" />
+          <Property Name="C_IsShow" Type="Int32" />
+          <Property Name="C_IsDeleted" Type="Int32" />
+          <Property Name="C_Productdetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -1246,6 +1256,11 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="C_Productdetails" ColumnName="_Productdetails" />
+                <ScalarProperty Name="C_IsDeleted" ColumnName="_IsDeleted" />
+                <ScalarProperty Name="C_IsShow" ColumnName="_IsShow" />
+                <ScalarProperty Name="C_IsApproved" ColumnName="_IsApproved" />
+                <ScalarProperty Name="C_Views" ColumnName="_Views" />
                 <ScalarProperty Name="C_ID" ColumnName="_ID" />
                 <ScalarProperty Name="C_Cate" ColumnName="_Cate" />
                 <ScalarProperty Name="C_Title" ColumnName="_Title" />

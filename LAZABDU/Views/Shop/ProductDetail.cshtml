@@ -1,0 +1,325 @@
+﻿@model LAZABDU.Models.Product
+@using PagedList.Mvc;
+@{
+    Layout = "/Views/Shared/MasterView.cshtml";
+    var relatedProducts = (List<LAZABDU.Models.Product>)ViewBag.relatedProducts;
+    var alsoLikeProducts = (List<LAZABDU.Models.Product>)ViewBag.alsoLikeProducts;
+
+}
+@section OpenGraph{
+    <title>Mua sắm | Siêu thị tiện lợi cho mọi nhà</title>
+}
+<div class="relative full-width">
+    <!-- Breadcrumb -->
+    <div class="container-web relative">
+        <div class="container">
+            <div class="row">
+                <div class="breadcrumb-web">
+                    <ul class="clear-margin">
+                        <li class="animate-default title-hover-red"><a href="/">Trang chủ</a></li>
+                        <li class="animate-default title-hover-red"><a href="@Url.Action("Index", "Shop")">Mua sắm</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumb -->
+    <!-- Content Category -->
+    <div class="relative container-web">
+        <div class="container">
+            <div class="row ">
+                <!-- Content Category -->
+                <div class="col-md-9 relative clear-padding">
+                    <div class="col-sm-12 col-xs-12 col-md-1 relative overfollow-hidden clear-padding button-show-sidebar clearfix">
+                        <p onclick="showSideBar()"><span class="ti-filter"></span> Sidebar</p>
+                    </div>
+                    <!-- Product Content Detail -->
+                    <div class="top-product-detail relative ">
+                        <div class="row">
+                            <!-- Slide Product Detail -->
+                            <div class="col-md-7 relative col-sm-12 col-xs-12">
+                                <div id="owl-big-slide" class="relative sync-owl-big-image">
+                                    <div class="item center-vertical-image">
+                                        <img src="@Model.C_ImagePath" alt="@Model.C_SlugTitle -1">
+                                    </div>
+                                    <div class="item center-vertical-image">
+                                        <img src="@Model.C_ImagePath_2" alt="@Model.C_SlugTitle -2">
+                                    </div>
+                                    <div class="item center-vertical-image">
+                                        <img src="@Model.C_ImagePath_3" alt="@Model.C_SlugTitle -3">
+                                    </div>
+                                    <div class="item center-vertical-image">
+                                        <img src="@Model.C_ImagePath_4" alt="@Model.C_SlugTitle -4">
+                                    </div>
+                                </div>
+                                <div class="relative thumbnail-slide-detail">
+                                    <div id="owl-thumbnail-slide" class="sync-owl-thumbnail-image" data-items="3,4,3,2">
+                                        <div class="item center-vertical-image">
+                                            <img src="@Model.C_ImagePath" alt="@Model.C_SlugTitle thumb-1">
+                                        </div>
+                                        <div class="item center-vertical-image">
+                                            <img src="@Model.C_ImagePath_2" alt="@Model.C_SlugTitle thumb-2">
+                                        </div>
+                                        <div class="item center-vertical-image">
+                                            <img src="@Model.C_ImagePath_3" alt="@Model.C_SlugTitle thumb-3">
+                                        </div>
+                                        <div class="item center-vertical-image">
+                                            <img src="@Model.C_ImagePath_4" alt="@Model.C_SlugTitle thumb-4">
+                                        </div>
+                                    </div>
+                                    <div class="relative nav-prev-detail btn-slide-detail"></div>
+                                    <div class="relative nav-next-detail btn-slide-detail"></div>
+                                </div>
+                            </div>
+                            <!-- Info Top Product -->
+                            <div class="col-md-5 col-sm-12 col-xs-12">
+                                <div class="name-ranking-product relative bottom-padding-15-default bottom-margin-15-default border no-border-r no-border-t no-border-l">
+                                    <h1 class="name-product">@Html.Raw(Model.C_Title)</h1>
+                                    <p class="clearfix price-product"><span class="price-old">$700.00</span> $350.00</p>
+                                    <div class="product-code clearfix full-width">
+                                        <p class="float-left relative">Mã SP: #@Model.C_ID</p>
+                                        <p class="float-left clear-margin">
+                                            Tình trạng: 
+                                            @if (Model.C_Inventory > 0)
+                                            {
+                                                @Html.Raw("<span class='text-green'>Còn hàng</span>")
+                                            }
+                                            else
+                                            {
+                                                @Html.Raw("<span class='text-danger'>Hết hàng</span>")
+                                            }
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="relative intro-product-detail bottom-margin-15-default bottom-padding-15-default border no-border-r no-border-t no-border-l">
+                                    <p class="clear-margin">@Html.Raw(Model.C_Decription)</p>
+                                </div>
+                                <div class="relative option-product-detail bottom-padding-15-default border no-border-r no-border-t no-border-l">
+                                    <p class="bold clear-margin bottom-margin-15-default">Available Options:</p>
+                                    <div class="relative option-product-1 bottom-margin-15-default">
+                                        <p class="float-left">Color:</p>
+                                        <ul class="check-box-custom list-color clearfix clear-margin">
+                                            <li>
+                                                <label>
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label>
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label>
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label>
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label>
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label>
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="relative option-product-2 clearfix">
+                                        <div class="option-product-son float-left right-margin-default">
+                                            <p class="float-left">Qty:</p>
+                                            <input type="number" class="left-margin-15-default" min="01" step="1" max="10" value="1" name="num">
+                                        </div>
+                                        <div class="option-product-son float-left">
+                                            <p class="float-left">Size:</p>
+                                            <select class="">
+                                                <option value="x">X</option>
+                                                <option value="s">S</option>
+                                                <option value="xl">XL</option>
+                                                <option value="xxl">XXL</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="relative button-product-list clearfix full-width clear-margin">
+                                    <ul class="clear-margin top-margin-default clearfix bottom-margin-default">
+                                        <li class="button-hover-red"><a href="#" class="animate-default">Add to Cart</a></li>
+                                        <li><a href="#" class="animate-default"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
+                                        <li><a href="#" class="animate-default"><i class="fa fa-signal" aria-hidden="true"></i></a></li>
+                                        <li><a href="#" class="animate-default"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                    <div class="btn-print clearfix">
+                                        <a href="javascript:;" class="right-margin-default" onclick="printWebsite()"><i class="fa fa-print" aria-hidden="true"></i> Print</a>
+                                        <a href="mailto:"><i class="fa fa-envelope" aria-hidden="true"></i> Send to a Friend</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-product-detail bottom-margin-default relative">
+                        <div class="row">
+                            <div class="col-md-12 relative overfollow-hidden">
+                                <ul class="title-tabs clearfix relative">
+                                    <li onclick="changeTabsProductDetail(1)" class="title-tabs-product-detail title-tabs-1 border no-border-b active-title-tabs bold uppercase">CHI TIẾT SẢN PHẨM</li>
+                                    <li onclick="changeTabsProductDetail(2)" class="title-tabs-product-detail title-tabs-2 border no-border-b bold uppercase">MÔ TẢ SẢN PHẨM</li>
+                                    <li onclick="changeTabsProductDetail(3)" class="title-tabs-product-detail title-tabs-3 border no-border-b bold uppercase">ĐÁNH GIÁ</li>
+                                </ul>
+                                <div class="content-tabs-product-detail relative content-tab-1 border active-tabs-product-detail bottom-padding-default top-padding-default left-padding-default right-padding-default">
+                                    @if (Model.C_Productdetails != null)
+                                    {
+                                        <p class="content-raw-html">
+                                            @Html.Raw(Model.C_Productdetails)
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                    <p class="content-raw-html">
+                                    Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium. Fusce egestas elit eget lorem. In auctor lobortis lacus.
+                                    <br />
+                                    <br />Morbi mollis tellus ac sapien. Nunc nec neque. Praesent nec nisl a purus blandit viverra. Nunc nec neque. Pellentesque auctor neque nec urna. Curabitur suscipit suscipit tellus. Cras id dui. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas vestibulum mollis diam.
+                                    <br />
+                                    <br />Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Sed lectus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Nam at tortor in tellus interdum sagittis. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
+                                    Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium. Fusce egestas elit eget lorem. In auctor lobortis lacus.
+                                    <br />
+                                    <br />Morbi mollis tellus ac sapien. Nunc nec neque. Praesent nec nisl a purus blandit viverra. Nunc nec neque. Pellentesque auctor neque nec urna. Curabitur suscipit suscipit tellus. Cras id dui. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas vestibulum mollis diam.
+                                    <br />
+                                    <br />Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Sed lectus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Nam at tortor in tellus interdum sagittis. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
+                                    Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium. Fusce egestas elit eget lorem. In auctor lobortis lacus.
+                                    <br />
+                                    <br />Morbi mollis tellus ac sapien. Nunc nec neque. Praesent nec nisl a purus blandit viverra. Nunc nec neque. Pellentesque auctor neque nec urna. Curabitur suscipit suscipit tellus. Cras id dui. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas vestibulum mollis diam.
+                                    <br />
+                                    <br />Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Sed lectus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Nam at tortor in tellus interdum sagittis. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
+                                    Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium. Fusce egestas elit eget lorem. In auctor lobortis lacus.
+                                    <br />
+                                    <br />Morbi mollis tellus ac sapien. Nunc nec neque. Praesent nec nisl a purus blandit viverra. Nunc nec neque. Pellentesque auctor neque nec urna. Curabitur suscipit suscipit tellus. Cras id dui. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas vestibulum mollis diam.
+                                    <br />
+                                    <br />Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Sed lectus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Nam at tortor in tellus interdum sagittis. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
+                                </p>
+                                    }
+                                </div>
+                                <div class="content-tabs-product-detail relative content-tab-2 border bottom-padding-default top-padding-default left-padding-default right-padding-default">
+                                    @if (Model.C_Content != null)
+                                    {
+                                        <p class="content-raw-html">
+                                            @Html.Raw(Model.C_Content)
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p class="content-raw-html">
+                                            Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium. Fusce egestas elit eget lorem. In auctor lobortis lacus.
+                                            <br />
+                                            <br />Morbi mollis tellus ac sapien. Nunc nec neque. Praesent nec nisl a purus blandit viverra. Nunc nec neque. Pellentesque auctor neque nec urna. Curabitur suscipit suscipit tellus. Cras id dui. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas vestibulum mollis diam.
+                                            <br />
+                                            <br />Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Sed lectus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Nam at tortor in tellus interdum sagittis. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
+                                            Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium. Fusce egestas elit eget lorem. In auctor lobortis lacus.
+                                            <br />
+                                            <br />Morbi mollis tellus ac sapien. Nunc nec neque. Praesent nec nisl a purus blandit viverra. Nunc nec neque. Pellentesque auctor neque nec urna. Curabitur suscipit suscipit tellus. Cras id dui. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas vestibulum mollis diam.
+                                            <br />
+                                            <br />Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Sed lectus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Nam at tortor in tellus interdum sagittis. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
+                                            Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium. Fusce egestas elit eget lorem. In auctor lobortis lacus.
+                                            <br />
+                                            <br />Morbi mollis tellus ac sapien. Nunc nec neque. Praesent nec nisl a purus blandit viverra. Nunc nec neque. Pellentesque auctor neque nec urna. Curabitur suscipit suscipit tellus. Cras id dui. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas vestibulum mollis diam.
+                                            <br />
+                                            <br />Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Sed lectus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Nam at tortor in tellus interdum sagittis. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
+                                            Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium. Fusce egestas elit eget lorem. In auctor lobortis lacus.
+                                            <br />
+                                            <br />Morbi mollis tellus ac sapien. Nunc nec neque. Praesent nec nisl a purus blandit viverra. Nunc nec neque. Pellentesque auctor neque nec urna. Curabitur suscipit suscipit tellus. Cras id dui. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas vestibulum mollis diam.
+                                            <br />
+                                            <br />Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Sed lectus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Nam at tortor in tellus interdum sagittis. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
+                                        </p>
+                                    }
+                                </div>
+                                <div class="content-tabs-product-detail relative content-tab-3 border bottom-padding-default top-padding-default left-padding-default right-padding-default">
+                                <p>Chức năng đang được cập nhật, vui lòng thử lại sau. Cảm ơn !</p> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-product-bottom relative">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 relative bottom slide-related-product">
+                                <p class="bold title-slide-product-bottom">SẢN PHẨM LIÊN QUAN</p>
+                                <div class="button-slide-related" id="btn-slide-1"></div>
+                                <div class="owl-theme owl-carousel" data-items="1,2,3">
+                                    @foreach(var _product in relatedProducts)
+                                    {
+                                    <div class="items">
+                                        <div class="full-width product-category relative">
+                                            <div class="image-product  relative overfollow-hidden">
+                                                <div class="center-vertical-image">
+                                                    <img src="@Model.C_ImagePath" alt="@Model.C_SlugTitle">
+                                                </div>
+                                                <a href="#"></a>
+                                                <ul class="option-product animate-default">
+                                                    <li class="relative"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                                    <li class="relative"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
+                                                    <li class="relative"><a href="javascript:;"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <h3 class="title-product animate-default title-hover-black clearfix full-width"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })">@Html.Raw(_product.C_Title)</a></h3>
+                                            <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                            <div class="clearfix location-product-category">
+                                                <p><i class="fas fa-map-marker-alt"></i> @(_product.Shop != null ? _product.Shop.C_Province : "NoneShop")</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 relative slide-related-product">
+                                <p class="bold title-slide-product-bottom">CÓ THỂ BẠN CŨNG THÍCH</p>
+                                <div class="button-slide-related" id="btn-slide-2"></div>
+                                <div class="owl-theme owl-carousel" data-items="1,2,3">
+                                    @foreach (var _product in alsoLikeProducts)
+                                    {
+                                        <div class="items">
+                                            <div class="full-width product-category relative">
+                                                <div class="image-product  relative overfollow-hidden">
+                                                    <div class="center-vertical-image">
+                                                        <img src="@Model.C_ImagePath" alt="@Model.C_SlugTitle">
+                                                    </div>
+                                                    <a href="#"></a>
+                                                    <ul class="option-product animate-default">
+                                                        <li class="relative"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                                        <li class="relative"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
+                                                        <li class="relative"><a href="javascript:;"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <h3 class="title-product animate-default title-hover-black clearfix full-width"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })">@Html.Raw(_product.C_Title)</a></h3>
+                                                <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                                <div class="clearfix location-product-category">
+                                                    <p><i class="fas fa-map-marker-alt"></i> @(_product.Shop != null ? _product.Shop.C_Province : "NoneShop")</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Product Content Category -->
+                </div>
+                <!-- Sider Bar -->
+                @Html.Action("MasterSiderbar", "Shop")
+                <!-- End Sider Bar Box -->
+            </div>
+        </div>
+    </div>
+    <!-- End Sider Bar -->
+</div>
+@section Script{
+<script src="~/Content/static/js/slick.min.js" defer=""></script>
+    }

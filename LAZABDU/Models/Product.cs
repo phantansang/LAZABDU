@@ -39,6 +39,11 @@ namespace LAZABDU.Models
         public Nullable<System.DateTime> C_CreateAt { get; set; }
         public Nullable<System.DateTime> C_ModifyAt { get; set; }
         public string C_Logs { get; set; }
+        public string C_Views { get; set; }
+        public Nullable<int> C_IsApproved { get; set; }
+        public Nullable<int> C_IsShow { get; set; }
+        public Nullable<int> C_IsDeleted { get; set; }
+        public string C_Productdetails { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BookingDetail> BookingDetails { get; set; }

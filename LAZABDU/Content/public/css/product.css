@@ -19,11 +19,15 @@
 .info-product-sellers-sidebar{
 	
 }
-.title-product-sellers-sidebar a{
-	font-size: 14px;
-	color: #6c6c6c;
-	text-transform: uppercase;
+.title-product-sellers-sidebar a {
+    font-size: 14px;
+    color: #6c6c6c;
     font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .best-sellers-product {
     margin: 10px 0;
