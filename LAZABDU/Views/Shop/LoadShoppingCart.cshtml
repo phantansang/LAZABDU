@@ -1,0 +1,34 @@
+﻿@model LAZABDU.Models.ShoppingCart
+<style type="text/css">
+    .title-product-limit {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+    }
+</style>
+<div class="cart-detail-header border">
+    <div class="relative">
+        @foreach (var _productCart in Model._productCarts)
+        {
+            <div class="product-cart-son clearfix">
+                <div class="image-product-cart float-left center-vertical-image">
+                    <a href="#"><img src="@_productCart._product.C_ImagePath" alt="@_productCart._product.C_SlugTitle" /></a>
+                </div>
+                <div class="info-product-cart float-left">
+                    <p class="title-product title-hover-black"><a class="animate-default title-product-limit" href="#">@Html.Raw(_productCart._product.C_Title)</a></p>
+                    <p class="clearfix price-product">@String.Format("{0:0,0 ₫}", _productCart._product.C_Price) <span class="total-product-cart-son">(x@_productCart._quantity)</span></p>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="relative border no-border-l no-border-r total-cart-header">
+        <p class="bold clear-margin">Tổng tiền:</p>
+        <p class="clear-margin bold">@String.Format("{0:0,0 ₫}", Model._cartTotal)</p>
+    </div>
+    <div class="relative btn-cart-header">
+        <a href="#" class="uppercase bold animate-default">XEM GIỎ HÀNG</a>
+        <a href="#" class="uppercase bold button-hover-red animate-default">THANH TOÁN</a>
+    </div>
+</div>
+

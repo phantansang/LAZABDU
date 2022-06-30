@@ -59,42 +59,13 @@
                 </div>
                 <div class="clearfix cart-website absolute" onclick="showCartBoxDetail()">
                     <img alt="Icon Cart" src="~/Content/public/img/icon_cart.png" />
-                    <p class="count-total-shopping absolute">2</p>
+                    <p class="count-total-shopping absolute" id="CountProductsCart">@Session["CountProductsCart"]</p>
                 </div>
-                <div class="clearfix cart-website absolute" onclick="showCartBoxDetail()">
-                    <img alt="Icon Cart" src="~/Content/public/img/icon_cart.png" />
-                    <p class="count-total-shopping absolute">2</p>
+                <!--Open Shopping Cart-->
+                <div id="Open-shoppingCart">
+                    @Html.Action("LoadShoppingCart", "Shop")
                 </div>
-                <div class="cart-detail-header border">
-                    <div class="relative">
-                        <div class="product-cart-son clearfix">
-                            <div class="image-product-cart float-left center-vertical-image ">
-                                <a href="#"><img src="~/Content/public/img/product_image_6-min.png" alt="" /></a>
-                            </div>
-                            <div class="info-product-cart float-left">
-                                <p class="title-product title-hover-black"><a class="animate-default" href="#">MH02-Black09</a></p>
-                                <p class="clearfix price-product">$350 <span class="total-product-cart-son">(x1)</span></p>
-                            </div>
-                        </div>
-                        <div class="product-cart-son">
-                            <div class="image-product-cart float-left center-vertical-image">
-                                <a href="#"><img src="~/Content/public/img/product_image_7-min.png" alt="" /></a>
-                            </div>
-                            <div class="info-product-cart float-left">
-                                <p class="title-product title-hover-black"><a class="animate-default" href="#">Voyage Yoga Bag</a></p>
-                                <p class="clearfix price-product">$350 <span class="total-product-cart-son">(x1)</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative border no-border-l no-border-r total-cart-header">
-                        <p class="bold clear-margin">Subtotal:</p>
-                        <p class="clear-margin bold">$700</p>
-                    </div>
-                    <div class="relative btn-cart-header">
-                        <a href="#" class="uppercase bold animate-default">view cart</a>
-                        <a href="#" class="uppercase bold button-hover-red animate-default">checkout</a>
-                    </div>
-                </div>
+                <!--End Shopping Cart-->
                 <div class="mask-search absolute clearfix" onclick="hiddenBoxSearchMobile()"></div>
                 <div class="clearfix box-search-mobile">
                 </div>

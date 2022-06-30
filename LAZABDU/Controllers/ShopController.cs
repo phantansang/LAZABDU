@@ -59,6 +59,12 @@ namespace LAZABDU.Controllers
             ViewBag.Count = products.Count();
             return View(products.ToPagedList(pageNumber, pageSize));
         }
+        public PartialViewResult LoadShoppingCart()
+        {
+            ShoppingCart _shoppingCart = (ShoppingCart)Session["ShoppingCart"];
+            if (_shoppingCart == null) _shoppingCart = new ShoppingCart();
+            return PartialView(_shoppingCart);
+        }
         public ActionResult ProductDetail(string Slug, string ProdID)
         {
             Product detailProduct = DB.Products.Find(ProdID);
@@ -80,5 +86,26 @@ namespace LAZABDU.Controllers
             ViewBag.alsoLikeProducts = alsoLikeProducts;
             return View(detailProduct);
         }
+        public JsonResult AddToShoppingCart(string idProduct, int  quantity)
+        {
+            Product _product = DB.Products.Find(idProduct);
+            if (_product != null)
+            {
+                ProductsCart productsCart = new ProductsCart(_product, quantity, (int)_product.C_Price);
+                ShoppingCart _shoppingCart = (ShoppingCart)Session["ShoppingCart"];
+                if (_shoppingCart == null) _shoppingCart = new ShoppingCart();
+                _shoppingCart.Add(productsCart);
+                Session["ShoppingCart"] = _shoppingCart;
+                Session["CountProductsCart"] = _shoppingCart._cartQuantity;
+                var result = new { Status = true, Note = "Đã thêm sản phẩm vào giỏ hàng thành công !", CartQuantity = _shoppingCart._cartQuantity };
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var result = new { Status = false, Note = "Đã có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng !", CartQuantity = 0 };
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 }

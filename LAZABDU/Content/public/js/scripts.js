@@ -1,4 +1,65 @@
 
+//My custom
+function AddToShoppingCart(ID_Product) {
+	$.ajax({
+		url: "/Shop/AddToShoppingCart?idProduct=" + ID_Product + "&quantity=1",
+		type: "GET",
+		contentType: "application/json;charset=UTF-8",
+		dataType: "json",
+		success: function (result) {
+			if (result.Status) {
+				alert(result.Note);
+				$("#CountProductsCart").text("" + result.CartQuantity);
+				if (!window.location.origin) {
+					window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+				}
+				var div_Open_shopping_Cart = window.location.origin + "/Shop/LoadShoppingCart";
+				$('#Open-shoppingCart').load(div_Open_shopping_Cart);
+				setTimeout(function () {
+					$(window).scrollTop(0);
+					showCartBoxDetail();
+				}, 500);
+			}
+			else {
+				alert(result.Note);
+			}
+		},
+		error: function (errormessage) {
+			$.alert(errormessage.responseText, "error");
+		}
+	});
+}
+function AddToShoppingCartWithQuantity(ID_Product) {
+	var quantity = $('#num').val();
+	$.ajax({
+		url: "/Shop/AddToShoppingCart?idProduct=" + ID_Product + "&quantity=" + quantity,
+		type: "GET",
+		contentType: "application/json;charset=UTF-8",
+		dataType: "json",
+		success: function (result) {
+			if (result.Status) {
+				alert(result.Note);
+				$("#CountProductsCart").text("" + result.CartQuantity);
+				if (!window.location.origin) {
+					window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+				}
+				var div_Open_shopping_Cart = window.location.origin + "/Shop/LoadShoppingCart";
+				$('#Open-shoppingCart').load(div_Open_shopping_Cart);
+				setTimeout(function () {
+					$(window).scrollTop(0);
+					showCartBoxDetail();
+				}, 500);
+			}
+			else {
+				alert(result.Note);
+			}
+		},
+		error: function (errormessage) {
+			$.alert(errormessage.responseText, "error");
+		}
+	});
+}
+//End My custom
 function showBoxCateHomeByID(id,element_general){
 	$(element_general).removeClass('active-box-category');
 	$(element_general).css({display:"none",opacity:0});

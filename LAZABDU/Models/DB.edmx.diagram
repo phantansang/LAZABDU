@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="763c4132925745daa76ed963e65090cb" Name="Diagram1" ZoomLevel="45">
+      <Diagram DiagramId="763c4132925745daa76ed963e65090cb" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="LAZABDU_VN_DBModel.AdminAccount" Width="1.5" PointX="12" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="LAZABDU_VN_DBModel.AdminLog" Width="1.5" PointX="14.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="LAZABDU_VN_DBModel.Booking" Width="1.5" PointX="4.125" PointY="5.375" IsExpanded="true" />
