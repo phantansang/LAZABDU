@@ -15,15 +15,11 @@ namespace LAZABDU.Models
     public partial class Promotion
     {
         public int C_ID { get; set; }
+        public Nullable<int> C_SalesPromotionID { get; set; }
         public string C_Product { get; set; }
-        public string C_Title { get; set; }
-        public Nullable<int> C_Discount { get; set; }
-        public Nullable<System.DateTime> C_From { get; set; }
-        public Nullable<System.DateTime> C_To { get; set; }
-        public Nullable<int> C_Status { get; set; }
-        public Nullable<System.DateTime> C_CreateAt { get; set; }
         public string C_Logs { get; set; }
     
         public virtual Product Product { get; set; }
+        public virtual SalesPromotion SalesPromotion { get; set; }
     }
 }

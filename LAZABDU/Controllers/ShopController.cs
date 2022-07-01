@@ -91,7 +91,7 @@ namespace LAZABDU.Controllers
             Product _product = DB.Products.Find(idProduct);
             if (_product != null)
             {
-                ProductsCart productsCart = new ProductsCart(_product, quantity, (int)_product.C_Price);
+                ProductsCart productsCart = new ProductsCart(_product, quantity);
                 ShoppingCart _shoppingCart = (ShoppingCart)Session["ShoppingCart"];
                 if (_shoppingCart == null) _shoppingCart = new ShoppingCart();
                 _shoppingCart.Add(productsCart);
@@ -106,6 +106,19 @@ namespace LAZABDU.Controllers
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
         }
+        //public void ApplyPromotion()
+        //{
+        //    foreach(Product _product in DB.Products)
+        //    {
+        //        Promotion _newPromotion = new Promotion();
+        //        SalesPromotion _salesPromotion = DB.SalesPromotions.Find(1);
+        //        _newPromotion.C_Product = _product.C_ID;
+        //        _newPromotion.C_SalesPromotionID = 1;
+        //        _newPromotion.C_Logs = "<i>[" + DateTime.Now + "]</i>: " + "Khuyến mãi được khởi tạo theo [<b>" + _salesPromotion.C_Title + "</b>].";
+        //        DB.Promotions.Add(_newPromotion);
+        //    }
+        //    DB.SaveChanges();
+        //}
 
     }
 }

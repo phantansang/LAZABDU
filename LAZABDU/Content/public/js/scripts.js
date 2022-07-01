@@ -1,4 +1,3 @@
-
 //My custom
 function AddToShoppingCart(ID_Product) {
 	$.ajax({
@@ -8,7 +7,7 @@ function AddToShoppingCart(ID_Product) {
 		dataType: "json",
 		success: function (result) {
 			if (result.Status) {
-				alert(result.Note);
+				$.notify(result.Note, "success");
 				$("#CountProductsCart").text("" + result.CartQuantity);
 				if (!window.location.origin) {
 					window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
@@ -21,11 +20,11 @@ function AddToShoppingCart(ID_Product) {
 				}, 500);
 			}
 			else {
-				alert(result.Note);
+				$.notify(result.Note, "error");
 			}
 		},
 		error: function (errormessage) {
-			$.alert(errormessage.responseText, "error");
+			$.notify(errormessage.responseText, "error");
 		}
 	});
 }
@@ -38,7 +37,7 @@ function AddToShoppingCartWithQuantity(ID_Product) {
 		dataType: "json",
 		success: function (result) {
 			if (result.Status) {
-				alert(result.Note);
+				$.notify(result.Note, "success");
 				$("#CountProductsCart").text("" + result.CartQuantity);
 				if (!window.location.origin) {
 					window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
@@ -51,11 +50,11 @@ function AddToShoppingCartWithQuantity(ID_Product) {
 				}, 500);
 			}
 			else {
-				alert(result.Note);
+				$.notify(result.Note, "error");
 			}
 		},
 		error: function (errormessage) {
-			$.alert(errormessage.responseText, "error");
+			$.notify(errormessage.responseText, "error");
 		}
 	});
 }

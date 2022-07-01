@@ -12,32 +12,28 @@ namespace LAZABDU.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Shop
+    public partial class SalesPromotion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Shop()
+        public SalesPromotion()
         {
-            this.Products = new HashSet<Product>();
-            this.SalesPromotions = new HashSet<SalesPromotion>();
+            this.Promotions = new HashSet<Promotion>();
         }
     
-        public string C_ID { get; set; }
+        public int C_ID { get; set; }
         public string C_Title { get; set; }
-        public string C_SlugTitle { get; set; }
         public string C_Decription { get; set; }
-        public string C_Avatar { get; set; }
-        public string C_Address { get; set; }
-        public string C_Phone { get; set; }
-        public string C_Email { get; set; }
+        public string C_Range { get; set; }
+        public Nullable<int> C_Discount { get; set; }
+        public Nullable<System.DateTime> C_From { get; set; }
+        public Nullable<System.DateTime> C_To { get; set; }
+        public Nullable<int> C_Status { get; set; }
+        public string C_CreateBy { get; set; }
         public Nullable<System.DateTime> C_CreateAt { get; set; }
-        public string C_Owner { get; set; }
         public string C_Logs { get; set; }
-        public string C_Province { get; set; }
     
+        public virtual Shop Shop { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
-        public virtual UserAccount UserAccount { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesPromotion> SalesPromotions { get; set; }
+        public virtual ICollection<Promotion> Promotions { get; set; }
     }
 }

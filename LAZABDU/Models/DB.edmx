@@ -195,13 +195,8 @@
             <PropertyRef Name="_ID" />
           </Key>
           <Property Name="_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="_SalesPromotionID" Type="int" />
           <Property Name="_Product" Type="varchar" MaxLength="20" />
-          <Property Name="_Title" Type="nvarchar" MaxLength="200" />
-          <Property Name="_Discount" Type="int" />
-          <Property Name="_From" Type="datetime" />
-          <Property Name="_To" Type="datetime" />
-          <Property Name="_Status" Type="int" />
-          <Property Name="_CreateAt" Type="datetime" />
           <Property Name="_Logs" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Role">
@@ -222,6 +217,22 @@
           <Property Name="_Add_Role" Type="int" />
           <Property Name="_Update_Role" Type="int" />
           <Property Name="_Delete_Role" Type="int" />
+          <Property Name="_Logs" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SalesPromotion">
+          <Key>
+            <PropertyRef Name="_ID" />
+          </Key>
+          <Property Name="_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="_Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Decription" Type="nvarchar" MaxLength="500" />
+          <Property Name="_Range" Type="nvarchar" MaxLength="200" />
+          <Property Name="_Discount" Type="int" />
+          <Property Name="_From" Type="datetime" />
+          <Property Name="_To" Type="datetime" />
+          <Property Name="_Status" Type="int" />
+          <Property Name="_CreateBy" Type="varchar" MaxLength="20" />
+          <Property Name="_CreateAt" Type="datetime" />
           <Property Name="_Logs" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Shop">
@@ -402,6 +413,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Promotion___Sale__55009F39">
+          <End Role="SalesPromotion" Type="Self.SalesPromotion" Multiplicity="0..1" />
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesPromotion">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="Promotion">
+              <PropertyRef Name="_SalesPromotionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalesProm___Crea__51300E55">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="SalesPromotion" Type="Self.SalesPromotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="_ID" />
+            </Principal>
+            <Dependent Role="SalesPromotion">
+              <PropertyRef Name="_CreateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Shop___Owner__38996AB5">
           <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
           <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
@@ -465,6 +500,7 @@
           <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesPromotion" EntityType="Self.SalesPromotion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__AdminAcco___Role__52593CB8" Association="Self.FK__AdminAcco___Role__52593CB8">
@@ -514,6 +550,14 @@
           <AssociationSet Name="FK__Promotion___Prod__412EB0B6" Association="Self.FK__Promotion___Prod__412EB0B6">
             <End Role="Product" EntitySet="Product" />
             <End Role="Promotion" EntitySet="Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Promotion___Sale__55009F39" Association="Self.FK__Promotion___Sale__55009F39">
+            <End Role="SalesPromotion" EntitySet="SalesPromotion" />
+            <End Role="Promotion" EntitySet="Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalesProm___Crea__51300E55" Association="Self.FK__SalesProm___Crea__51300E55">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="SalesPromotion" EntitySet="SalesPromotion" />
           </AssociationSet>
           <AssociationSet Name="FK__Shop___Owner__38996AB5" Association="Self.FK__Shop___Owner__38996AB5">
             <End Role="UserAccount" EntitySet="UserAccount" />
@@ -722,12 +766,12 @@
           <NavigationProperty Name="BookingDetails" Relationship="Self.FK__BookingDe___Prod__4D94879B" FromRole="Product" ToRole="BookingDetail" />
           <NavigationProperty Name="ProductCategory" Relationship="Self.FK__Product___Cate__3D5E1FD2" FromRole="Product" ToRole="ProductCategory" />
           <NavigationProperty Name="Shop" Relationship="Self.FK__Product___Create__3E52440B" FromRole="Product" ToRole="Shop" />
-          <NavigationProperty Name="Promotions" Relationship="Self.FK__Promotion___Prod__412EB0B6" FromRole="Product" ToRole="Promotion" />
           <Property Name="C_Views" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="C_IsApproved" Type="Int32" />
           <Property Name="C_IsShow" Type="Int32" />
           <Property Name="C_IsDeleted" Type="Int32" />
           <Property Name="C_Productdetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Promotions" Relationship="LAZABDU_VN_DBModel.FK__Promotion___Prod__412EB0B6" FromRole="Product" ToRole="Promotion" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -746,21 +790,6 @@
           <NavigationProperty Name="Products" Relationship="Self.FK__Product___Cate__3D5E1FD2" FromRole="ProductCategory" ToRole="Product" />
           <NavigationProperty Name="ChildProductCategories" Relationship="Self.FK_ParentCategory" FromRole="ProductCategory" ToRole="ProductCategory1" />
           <NavigationProperty Name="ParentProductCategory" Relationship="Self.FK_ParentCategory" FromRole="ProductCategory1" ToRole="ProductCategory" />
-        </EntityType>
-        <EntityType Name="Promotion">
-          <Key>
-            <PropertyRef Name="C_ID" />
-          </Key>
-          <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="C_Product" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="C_Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="C_Discount" Type="Int32" />
-          <Property Name="C_From" Type="DateTime" Precision="3" />
-          <Property Name="C_To" Type="DateTime" Precision="3" />
-          <Property Name="C_Status" Type="Int32" />
-          <Property Name="C_CreateAt" Type="DateTime" Precision="3" />
-          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Promotion___Prod__412EB0B6" FromRole="Promotion" ToRole="Product" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -801,6 +830,7 @@
           <NavigationProperty Name="Products" Relationship="Self.FK__Product___Create__3E52440B" FromRole="Shop" ToRole="Product" />
           <NavigationProperty Name="UserAccount" Relationship="Self.FK__Shop___Owner__38996AB5" FromRole="Shop" ToRole="UserAccount" />
           <Property Name="C_Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SalesPromotions" Relationship="LAZABDU_VN_DBModel.FK__SalesProm___Crea__51300E55" FromRole="Shop" ToRole="SalesPromotion" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -977,18 +1007,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Promotion___Prod__412EB0B6">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Promotion" Type="Self.Promotion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="C_ID" />
-            </Principal>
-            <Dependent Role="Promotion">
-              <PropertyRef Name="C_Product" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ParentCategory">
           <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1" />
           <End Role="ProductCategory1" Type="Self.ProductCategory" Multiplicity="*" />
@@ -1026,7 +1044,6 @@
           <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="ProductCategories" EntityType="Self.ProductCategory" />
-          <EntitySet Name="Promotions" EntityType="Self.Promotion" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Shops" EntityType="Self.Shop" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
@@ -1082,10 +1099,6 @@
             <End Role="Shop" EntitySet="Shops" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__Promotion___Prod__412EB0B6" Association="Self.FK__Promotion___Prod__412EB0B6">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Promotion" EntitySet="Promotions" />
-          </AssociationSet>
           <AssociationSet Name="FK_ParentCategory" Association="Self.FK_ParentCategory">
             <End Role="ProductCategory" EntitySet="ProductCategories" />
             <End Role="ProductCategory1" EntitySet="ProductCategories" />
@@ -1094,7 +1107,86 @@
             <End Role="UserAccount" EntitySet="UserAccounts" />
             <End Role="Shop" EntitySet="Shops" />
           </AssociationSet>
+          <EntitySet Name="SalesPromotions" EntityType="LAZABDU_VN_DBModel.SalesPromotion" />
+          <AssociationSet Name="FK__SalesProm___Crea__51300E55" Association="LAZABDU_VN_DBModel.FK__SalesProm___Crea__51300E55">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="SalesPromotion" EntitySet="SalesPromotions" />
+          </AssociationSet>
+          <EntitySet Name="Promotions" EntityType="LAZABDU_VN_DBModel.Promotion" />
+          <AssociationSet Name="FK__Promotion___Prod__412EB0B6" Association="LAZABDU_VN_DBModel.FK__Promotion___Prod__412EB0B6">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Promotion" EntitySet="Promotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Promotion___Sale__55009F39" Association="LAZABDU_VN_DBModel.FK__Promotion___Sale__55009F39">
+            <End Role="SalesPromotion" EntitySet="SalesPromotions" />
+            <End Role="Promotion" EntitySet="Promotions" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="SalesPromotion">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Decription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="C_Range" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="C_Discount" Type="Int32" />
+          <Property Name="C_From" Type="DateTime" Precision="3" />
+          <Property Name="C_To" Type="DateTime" Precision="3" />
+          <Property Name="C_Status" Type="Int32" />
+          <Property Name="C_CreateBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_CreateAt" Type="DateTime" Precision="3" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Shop" Relationship="LAZABDU_VN_DBModel.FK__SalesProm___Crea__51300E55" FromRole="SalesPromotion" ToRole="Shop" />
+          <NavigationProperty Name="Promotions" Relationship="LAZABDU_VN_DBModel.FK__Promotion___Sale__55009F39" FromRole="SalesPromotion" ToRole="Promotion" />
+        </EntityType>
+        <Association Name="FK__SalesProm___Crea__51300E55">
+          <End Type="LAZABDU_VN_DBModel.Shop" Role="Shop" Multiplicity="0..1" />
+          <End Type="LAZABDU_VN_DBModel.SalesPromotion" Role="SalesPromotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="SalesPromotion">
+              <PropertyRef Name="C_CreateBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_SalesPromotionID" Type="Int32" />
+          <Property Name="C_Product" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="LAZABDU_VN_DBModel.FK__Promotion___Prod__412EB0B6" FromRole="Promotion" ToRole="Product" />
+          <NavigationProperty Name="SalesPromotion" Relationship="LAZABDU_VN_DBModel.FK__Promotion___Sale__55009F39" FromRole="Promotion" ToRole="SalesPromotion" />
+        </EntityType>
+        <Association Name="FK__Promotion___Prod__412EB0B6">
+          <End Type="LAZABDU_VN_DBModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="LAZABDU_VN_DBModel.Promotion" Role="Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="Promotion">
+              <PropertyRef Name="C_Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Promotion___Sale__55009F39">
+          <End Type="LAZABDU_VN_DBModel.SalesPromotion" Role="SalesPromotion" Multiplicity="0..1" />
+          <End Type="LAZABDU_VN_DBModel.Promotion" Role="Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesPromotion">
+              <PropertyRef Name="C_ID" />
+            </Principal>
+            <Dependent Role="Promotion">
+              <PropertyRef Name="C_SalesPromotionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1298,21 +1390,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Promotions">
-            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Promotion">
-              <MappingFragment StoreEntitySet="Promotion">
-                <ScalarProperty Name="C_ID" ColumnName="_ID" />
-                <ScalarProperty Name="C_Product" ColumnName="_Product" />
-                <ScalarProperty Name="C_Title" ColumnName="_Title" />
-                <ScalarProperty Name="C_Discount" ColumnName="_Discount" />
-                <ScalarProperty Name="C_From" ColumnName="_From" />
-                <ScalarProperty Name="C_To" ColumnName="_To" />
-                <ScalarProperty Name="C_Status" ColumnName="_Status" />
-                <ScalarProperty Name="C_CreateAt" ColumnName="_CreateAt" />
-                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Role">
               <MappingFragment StoreEntitySet="Role">
@@ -1367,6 +1444,33 @@
                 <ScalarProperty Name="C_LastChangePassword" ColumnName="_LastChangePassword" />
                 <ScalarProperty Name="C_IsKYC" ColumnName="_IsKYC" />
                 <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesPromotions">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.SalesPromotion">
+              <MappingFragment StoreEntitySet="SalesPromotion">
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+                <ScalarProperty Name="C_CreateAt" ColumnName="_CreateAt" />
+                <ScalarProperty Name="C_CreateBy" ColumnName="_CreateBy" />
+                <ScalarProperty Name="C_Status" ColumnName="_Status" />
+                <ScalarProperty Name="C_To" ColumnName="_To" />
+                <ScalarProperty Name="C_From" ColumnName="_From" />
+                <ScalarProperty Name="C_Discount" ColumnName="_Discount" />
+                <ScalarProperty Name="C_Range" ColumnName="_Range" />
+                <ScalarProperty Name="C_Decription" ColumnName="_Decription" />
+                <ScalarProperty Name="C_Title" ColumnName="_Title" />
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promotions">
+            <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Promotion">
+              <MappingFragment StoreEntitySet="Promotion">
+                <ScalarProperty Name="C_Logs" ColumnName="_Logs" />
+                <ScalarProperty Name="C_Product" ColumnName="_Product" />
+                <ScalarProperty Name="C_SalesPromotionID" ColumnName="_SalesPromotionID" />
+                <ScalarProperty Name="C_ID" ColumnName="_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

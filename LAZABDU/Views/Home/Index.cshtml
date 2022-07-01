@@ -293,7 +293,17 @@
                                             </div>
                                             <div class="clearfix absolute name-product-no-ranking">
                                                 <p class="title-product clearfix full-width"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })">@_product.C_Title</a></p>
-                                                <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                                <p class="clearfix price-product">
+                                                    @if (new LAZABDU.Models.Services().OnPromotion(_product) == null)
+                                                    {
+                                                        @Html.Raw(String.Format("{0:0,0 ₫}", _product.C_Price))
+                                                    }
+                                                    else
+                                                    {
+                                                        var promotion = new LAZABDU.Models.Services().OnPromotion(_product);
+                                                        <span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price)</span> @String.Format("{0:0,0 ₫}", promotion.Product.C_Price - (promotion.Product.C_Price * promotion.SalesPromotion.C_Discount / 100) )
+                                                    }
+                                                </p>
                                             </div>
                                         </div>
                                     }
@@ -368,7 +378,17 @@
                                         </div>
                                         <div class="clearfix absolute name-product-no-ranking">
                                             <p class="title-product clearfix full-width"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })">@Html.Raw(_product.C_Title)</a></p>
-                                            <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                            <p class="clearfix price-product">
+                                                @if (new LAZABDU.Models.Services().OnPromotion(_product) == null)
+                                                {
+                                                    @Html.Raw(String.Format("{0:0,0 ₫}", _product.C_Price))
+                                                }
+                                                else
+                                                {
+                                                    var promotion = new LAZABDU.Models.Services().OnPromotion(_product);
+                                                    <span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price)</span> @String.Format("{0:0,0 ₫}", promotion.Product.C_Price - (promotion.Product.C_Price * promotion.SalesPromotion.C_Discount / 100))
+                                                }
+                                            </p>
                                         </div>
                                     </div>
                                 }
@@ -385,7 +405,17 @@
                                             </div>
                                             <div class="clearfix absolute name-product-no-ranking">
                                                 <p class="title-product clearfix full-width"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })">@Html.Raw(_product.C_Title)</a></p>
-                                                <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                                <p class="clearfix price-product">
+                                                    @if (new LAZABDU.Models.Services().OnPromotion(_product) == null)
+                                                    {
+                                                        @Html.Raw(String.Format("{0:0,0 ₫}", _product.C_Price))
+                                                    }
+                                                    else
+                                                    {
+                                                        var promotion = new LAZABDU.Models.Services().OnPromotion(_product);
+                                                        <span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price)</span> @String.Format("{0:0,0 ₫}", promotion.Product.C_Price - (promotion.Product.C_Price * promotion.SalesPromotion.C_Discount / 100))
+                                                    }
+                                                </p>
                                             </div>
                                         </div>
                                     }
@@ -474,7 +504,17 @@
                                                 </div>
                                                 <div class="clearfix absolute name-product-no-ranking">
                                                     <p class="title-product clearfix full-width title-hover-black"><a href="@Url.Action("ProductDetail", "Shop", new {Slug = _product.C_SlugTitle, ProdID = _product.C_ID })">@Html.Raw(_product.C_Title)</a></p>
-                                                    <p class="clearfix price-product"><span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price + _product.C_Price * 10 / 100)</span> @String.Format("{0:0,0 ₫}", _product.C_Price)</p>
+                                                    <p class="clearfix price-product">
+                                                        @if (new LAZABDU.Models.Services().OnPromotion(_product) == null)
+                                                        {
+                                                            @Html.Raw(String.Format("{0:0,0 ₫}", _product.C_Price))
+                                                        }
+                                                        else
+                                                        {
+                                                            var promotion = new LAZABDU.Models.Services().OnPromotion(_product);
+                                                            <span class="price-old">@String.Format("{0:0,0 ₫}", _product.C_Price)</span> @String.Format("{0:0,0 ₫}", promotion.Product.C_Price - (promotion.Product.C_Price * promotion.SalesPromotion.C_Discount / 100))
+                                                        }
+                                                    </p>
                                                 </div>
                                             </div>
                                         }

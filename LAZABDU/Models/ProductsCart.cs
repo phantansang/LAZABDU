@@ -18,11 +18,17 @@ namespace LAZABDU.Models
             _price = 0;
             _total = 0;
         }
-        public ProductsCart(Product product, int quantity, int price)
+        public ProductsCart(Product product, int quantity)
         {
             _product = product;
             _quantity = quantity;
-            _price = price;
+            Services _service = new Services();
+            if (_service.OnPromotion(_product) != null)
+            {
+                Promotion promotion = _service.OnPromotion(_product);
+                _price = (int)(_product.C_Price - (_product.C_Price * promotion.SalesPromotion.C_Discount / 100));
+            }
+            else _price = (int)product.C_Price;
             _total = _price * _quantity;
         }
     }

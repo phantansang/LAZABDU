@@ -37,9 +37,10 @@ namespace LAZABDU.Models
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
-        public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
+        public virtual DbSet<SalesPromotion> SalesPromotions { get; set; }
+        public virtual DbSet<Promotion> Promotions { get; set; }
     }
 }

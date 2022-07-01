@@ -765,7 +765,7 @@ header{
 }
 .cart-detail-header{
 	width: 100%;
-	max-width: 320px;
+	max-width: 380px;
 	position: absolute;
 	top: 50px;
 	right: 0;
@@ -1437,7 +1437,7 @@ header{
 }
 .price-product {
     color: #eb1a21;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: -0.25px;
     font-family: 'Roboto Condensed', sans-serif;
 }
