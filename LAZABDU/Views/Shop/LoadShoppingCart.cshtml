@@ -9,37 +9,46 @@
 </style>
 <div class="cart-detail-header border">
     <div class="relative">
-        @foreach (var _productCart in Model._productCarts)
+        @if (Model._productCarts.Count > 0)
         {
-            <div class="product-cart-son clearfix">
-                <div class="image-product-cart float-left center-vertical-image">
-                    <a href="#"><img src="@_productCart._product.C_ImagePath" alt="@_productCart._product.C_SlugTitle" /></a>
+            foreach (var _productCart in Model._productCarts)
+            {
+                <div class="product-cart-son clearfix">
+                    <div class="image-product-cart float-left center-vertical-image">
+                        <a href="#"><img src="@_productCart._product.C_ImagePath" alt="@_productCart._product.C_SlugTitle" /></a>
+                    </div>
+                    <div class="info-product-cart float-left">
+                        <p class="title-product title-hover-black"><a class="animate-default title-product-limit" href="#">@Html.Raw(_productCart._product.C_Title)</a></p>
+                        <p class="clearfix price-product">
+                            @if (new LAZABDU.Models.Services().OnPromotion(_productCart._product) == null)
+                            {
+                                @Html.Raw(String.Format("{0:0,0 ₫}", _productCart._product.C_Price))
+                            }
+                            else
+                            {
+                                var promotion = new LAZABDU.Models.Services().OnPromotion(_productCart._product);
+                                <span class="price-old">@String.Format("{0:0,0 ₫}", _productCart._product.C_Price)</span> @String.Format("{0:0,0 ₫}", promotion.Product.C_Price - (promotion.Product.C_Price * promotion.SalesPromotion.C_Discount / 100))
+                            }
+                            <span class="total-product-cart-son">(x@_productCart._quantity)</span>
+                        </p>
+                    </div>
                 </div>
-                <div class="info-product-cart float-left">
-                    <p class="title-product title-hover-black"><a class="animate-default title-product-limit" href="#">@Html.Raw(_productCart._product.C_Title)</a></p>
-                    <p class="clearfix price-product">
-                        @if (new LAZABDU.Models.Services().OnPromotion(_productCart._product) == null)
-                        {
-                            @Html.Raw(String.Format("{0:0,0 ₫}", _productCart._product.C_Price))
-                        }
-                        else
-                        {
-                            var promotion = new LAZABDU.Models.Services().OnPromotion(_productCart._product);
-                            <span class="price-old">@String.Format("{0:0,0 ₫}", _productCart._product.C_Price)</span> @String.Format("{0:0,0 ₫}", promotion.Product.C_Price - (promotion.Product.C_Price * promotion.SalesPromotion.C_Discount / 100))
-                        }
-                        <span class="total-product-cart-son">(x@_productCart._quantity)</span>
-                    </p>
-                </div>
-            </div>
-        }
+            }
+            }
+            else
+            {
+            <p class="text-center">
+                <i>Giỏ hàng rỗng !</i>
+            </p>
+            }
     </div>
     <div class="relative border no-border-l no-border-r total-cart-header">
         <p class="bold clear-margin">Tổng tiền:</p>
         <p class="clear-margin bold">@String.Format("{0:0,0 ₫}", Model._cartTotal)</p>
     </div>
     <div class="relative btn-cart-header">
-        <a href="#" class="uppercase bold animate-default">XEM GIỎ HÀNG</a>
-        <a href="#" class="uppercase bold button-hover-red animate-default">THANH TOÁN</a>
+        <a href="@Url.Action("ShoppingCart", "Shop")" class="uppercase bold animate-default">XEM GIỎ HÀNG</a>
+        <a href="@Url.Action("Checkout", "Shop")" class="uppercase bold button-hover-red animate-default">THANH TOÁN</a>
     </div>
 </div>
 

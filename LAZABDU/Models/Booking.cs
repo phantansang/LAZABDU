@@ -34,6 +34,8 @@ namespace LAZABDU.Models
         public Nullable<int> C_Status { get; set; }
         public string C_Note { get; set; }
         public string C_Logs { get; set; }
+        public string C_ReceiverDistrict { get; set; }
+        public string C_ReceiverProvince { get; set; }
     
         public virtual UserAccount UserAccount { get; set; }
         public virtual Delivery Delivery { get; set; }

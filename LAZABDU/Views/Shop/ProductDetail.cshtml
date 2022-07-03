@@ -1,5 +1,4 @@
 ﻿@model LAZABDU.Models.Product
-@using PagedList.Mvc;
 @{
     Layout = "/Views/Shared/MasterView.cshtml";
     var relatedProducts = (List<LAZABDU.Models.Product>)ViewBag.relatedProducts;
@@ -7,7 +6,13 @@
 
 }
 @section OpenGraph{
-    <title>Mua sắm | Siêu thị tiện lợi cho mọi nhà</title>
+    <title>@Html.Raw(Model.C_Title) | Siêu thị tiện lợi cho mọi nhà</title>
+}
+@section Style{
+    <link rel="stylesheet" type="text/css" href="~/Content/public/css/product.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/public/css/category.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/static/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/static/css/slick-theme.css">
 }
 <div class="relative full-width">
     <!-- Breadcrumb -->
@@ -18,6 +23,7 @@
                     <ul class="clear-margin">
                         <li class="animate-default title-hover-red"><a href="/">Trang chủ</a></li>
                         <li class="animate-default title-hover-red"><a href="@Url.Action("Index", "Shop")">Mua sắm</a></li>
+                        <li class="animate-default title-hover-red">@Html.Raw(Model.C_Title)</li>
                     </ul>
                 </div>
             </div>
@@ -296,7 +302,6 @@
             </div>
         </div>
     </div>
-    <!-- End Sider Bar -->
 </div>
 @section Script{
     <script src="~/Content/static/js/slick.min.js" defer=""></script>

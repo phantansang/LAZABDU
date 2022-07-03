@@ -42,6 +42,8 @@
           <Property Name="_OrderValue" Type="int" />
           <Property Name="_ReceiverName" Type="nvarchar" MaxLength="50" />
           <Property Name="_ReceiverSex" Type="nvarchar" MaxLength="10" />
+          <Property Name="_ReceiverDistrict" Type="nchar" MaxLength="10" />
+          <Property Name="_ReceiverProvince" Type="nchar" MaxLength="10" />
           <Property Name="_ReceiverAddress" Type="nvarchar" MaxLength="200" />
           <Property Name="_ReceiverPhone" Type="varchar" MaxLength="20" />
           <Property Name="_ReceiverEmail" Type="varchar" MaxLength="50" />
@@ -266,6 +268,7 @@
           <Property Name="_Email" Type="varchar" MaxLength="50" />
           <Property Name="_Lastlogin" Type="datetime" />
           <Property Name="_LastChangePassword" Type="datetime" />
+          <Property Name="_IsActivated" Type="int" />
           <Property Name="_IsKYC" Type="int" />
           <Property Name="_Logs" Type="nvarchar(max)" />
         </EntityType>
@@ -634,6 +637,8 @@
           <NavigationProperty Name="Delivery" Relationship="Self.FK__Booking___Delive__48CFD27E" FromRole="Booking" ToRole="Delivery" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Booking___Paymen__49C3F6B7" FromRole="Booking" ToRole="PaymentMethod" />
           <NavigationProperty Name="BookingDetails" Relationship="Self.FK__BookingDe___Book__4CA06362" FromRole="Booking" ToRole="BookingDetail" />
+          <Property Name="C_ReceiverDistrict" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="C_ReceiverProvince" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="BookingDetail">
           <Key>
@@ -850,6 +855,7 @@
           <Property Name="C_Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking___Custom__47DBAE45" FromRole="UserAccount" ToRole="Booking" />
           <NavigationProperty Name="Shops" Relationship="Self.FK__Shop___Owner__38996AB5" FromRole="UserAccount" ToRole="Shop" />
+          <Property Name="C_IsActivated" Type="Int32" />
         </EntityType>
         <Association Name="FK__AdminAcco___Role__52593CB8">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
@@ -1225,6 +1231,8 @@
           <EntitySetMapping Name="Bookings">
             <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.Booking">
               <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="C_ReceiverProvince" ColumnName="_ReceiverProvince" />
+                <ScalarProperty Name="C_ReceiverDistrict" ColumnName="_ReceiverDistrict" />
                 <ScalarProperty Name="C_ID" ColumnName="_ID" />
                 <ScalarProperty Name="C_Customer" ColumnName="_Customer" />
                 <ScalarProperty Name="C_ProdCount" ColumnName="_ProdCount" />
@@ -1432,6 +1440,7 @@
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="LAZABDU_VN_DBModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="C_IsActivated" ColumnName="_IsActivated" />
                 <ScalarProperty Name="C_Username" ColumnName="_Username" />
                 <ScalarProperty Name="C_Password" ColumnName="_Password" />
                 <ScalarProperty Name="C_Name" ColumnName="_Name" />

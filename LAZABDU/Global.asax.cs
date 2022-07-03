@@ -20,7 +20,10 @@ namespace LAZABDU
         }
         protected void Session_Start()
         {
+            Session["IsLogin"] = true;
             Session["CustomerUsername"] = null;
+            Session["CustomerFullrname"] = null;
+            Session["NumberOfTimesIPLogin"] = 0;
             Session["ShoppingCart"] = new ShoppingCart();
             Session["CountProductsCart"] = 0;
         }

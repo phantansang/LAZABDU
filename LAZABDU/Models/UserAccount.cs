@@ -33,6 +33,7 @@ namespace LAZABDU.Models
         public Nullable<System.DateTime> C_LastChangePassword { get; set; }
         public Nullable<int> C_IsKYC { get; set; }
         public string C_Logs { get; set; }
+        public Nullable<int> C_IsActivated { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }

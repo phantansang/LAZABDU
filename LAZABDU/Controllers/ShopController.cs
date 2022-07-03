@@ -106,6 +106,20 @@ namespace LAZABDU.Controllers
                 return Json(result, JsonRequestBehavior.AllowGet);
             }
         }
+        public ActionResult ShoppingCart()
+        {
+            List<Delivery> deliveries = DB.Deliveries.ToList();
+            ViewBag.deliveries = deliveries;
+            ShoppingCart shoppingCart = (ShoppingCart)Session["ShoppingCart"];
+            return View(shoppingCart);
+        }
+        public ActionResult Checkout()
+        {  
+            List<Delivery> deliveries = DB.Deliveries.ToList();
+            ViewBag.deliveries = deliveries;
+            ShoppingCart shoppingCart = (ShoppingCart)Session["ShoppingCart"];
+            return View(shoppingCart);
+        }
         //public void ApplyPromotion()
         //{
         //    foreach(Product _product in DB.Products)
